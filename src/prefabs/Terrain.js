@@ -6,10 +6,11 @@
 class Terrain extends Phaser.GameObjects.Image {
 
 	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 343, y ?? 420, texture || "guapen", frame);
+		super(scene, x ?? 445, y ?? 383, texture || "guapen", frame);
 
 		/* START-USER-CTR-CODE */
 		this.text = "guapen";
+		this.sc = scene;
 		this.splitImage(4, 4);
 		this.tree = Phaser.Structs.RTree();
 		this.renderImage(x, y, 4);
@@ -53,6 +54,19 @@ class Terrain extends Phaser.GameObjects.Image {
 		return air && notAir;
 	}
 
+	chechAir(id, splitSize){
+		let air = 0;
+		for(let i = 0; i < splitSize; i++){
+			for(let j = 0; j < splitSize; j++){
+				let pixel = this.getPixel(i, j, id);
+				if(pixel.r === 0 && pixel.g === 0 && pixel.b === 0){
+					air++;
+				}
+			}
+		}
+
+		return air === splitSize * splitSize;
+	}
 	renderImage(x, y, splitSize){
 		let tex = this.scene.textures.get(this.text).getSourceImage();
 		let sizeX = tex.width;
@@ -60,7 +74,9 @@ class Terrain extends Phaser.GameObjects.Image {
 		let count = this.scene.textures.get(this.text).getFrameNames().length;
 		for(let i = 0; i < count; i++){
 			let pixel = this.getPixel(0, 0, i);
-
+			if(this.chechAir(i, splitSize)){
+				continue;
+			}
 			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
 			if(this.checkForAddCollision(i, splitSize)){
 				this.scene.physics.add.existing(sprite);
@@ -84,13 +100,23 @@ class Terrain extends Phaser.GameObjects.Image {
 
 	destroyArea(rect){
 		let area = this.tree.search(rect);
-		let area2 = this.tree.search({
-			minX: rect.minX+10,
-			minY: rect.minY-10,
-			maxX:rect.maxX+10,
-			maxY:rect.maxY+10})
+
 		for(let i = 0; i < area.length; i++){
 			area[i].sprite.destroy();
+			this.tree.remove(area[i]);
+		}
+		let area2 = this.tree.search({
+			minX: rect.minX-4,
+			minY: rect.minY-4,
+			maxX:rect.maxX+4,
+			maxY:rect.maxY+4
+		});
+
+		for(let i = 0; i < area2.length; i++){
+
+			this.sc.physics.add.existing(area2[i].sprite);
+			area2[i].sprite.body.setAllowGravity(false);
+			area2[i].sprite.body.pushable = false;
 		}
 	}
 
