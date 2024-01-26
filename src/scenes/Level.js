@@ -45,22 +45,23 @@ class Level extends Phaser.Scene {
 		hero_1.body.setOffset(0, 0);
 		hero_1.body.setSize(32, 32, false);
 
+		// gun
+		const gun = new Gun(this, 640, 267);
+		this.add.existing(gun);
+
 		// lists
 		const colliders = [hero_1];
 		const players = [hero, hero_1];
-		const team1 = [hero];
-		const team2 = [];
 
 		this.terrain = terrain;
 		this.hero = hero;
 		this.bg = bg;
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
+		this.gun = gun;
 		this.colliders = colliders;
 		this.players = players;
-		this.team1 = team1;
-		this.team2 = team2;
-
+		
 		this.events.emit("scene-awake");
 	}
 
@@ -74,14 +75,12 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Hero} */
 	hero_1;
+	/** @type {Gun} */
+	gun;
 	/** @type {Hero[]} */
 	colliders;
 	/** @type {Hero[]} */
 	players;
-	/** @type {Hero[]} */
-	team1;
-	/** @type {Array<any>} */
-	team2;
 
 	/* START-USER-CODE */
 
@@ -91,25 +90,68 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		let camera = this.camera = this.cameras.main;
+		camera.setPostPipeline();
 
 		this.setCollision();
 
-		this.setTimer();
+		this.setCountTimer();
+		this.updateTimer();
 
 		this.bg.setDepth(-1);
 
-		camera.setPostPipeline()
-		let blocks = this.terrain.all();
-		blocks.forEach(element => {
-			this.colliders.push(element.sprite);
-		});
-		this.physics.add.collider(this.players, this.colliders);
-		this.cursors = this.input.keyboard.createCursorKeys();
-		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
-
 		this.targetHeroIndex = 0;
-
 		this.setHeroTarget(this.targetHeroIndex);
+
+		this.cursors = this.input.keyboard.createCursorKeys();
+
+		console.log(this.camera.zoom);
+		this.addMouseControl();
+
+		this.setDebug();
+	}
+
+	addMouseControl() {
+		this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
+            // Get the current world point under pointer.
+
+			let camera = this.camera;
+
+            const worldPoint = camera.getWorldPoint(pointer.x, pointer.y);
+            const newZoom = camera.zoom - camera.zoom * 0.0015 * deltaY;
+
+            camera.zoomTo(Phaser.Math.Clamp(newZoom, 0.25, 2), 200);
+
+            // Update camera matrix, so `getWorldPoint` returns zoom-adjusted coordinates.
+            camera.preRender();
+            const newWorldPoint = camera.getWorldPoint(pointer.x, pointer.y);
+            // Scroll the camera to keep the pointer under the same world point.
+            camera.scrollX -= newWorldPoint.x - worldPoint.x;
+            camera.scrollY -= newWorldPoint.y - worldPoint.y;
+        });
+
+		this.input.on('pointerdown', pointer => {
+			this.gun.fire(pointer.worldX, pointer.worldY);
+		});
+
+		this.input.on('pointermove', pointer =>
+        {
+
+			this.gun.rotate(pointer.worldX, pointer.worldY);
+
+			// const bbox = {
+            //     minX: pointer.worldX - 10,
+            //     minY: pointer.worldY - 10,
+            //     maxX: pointer.worldX + 10,
+            //     maxY: pointer.worldY + 10
+            // };
+
+			// this.terrain.destroyArea(bbox);
+
+        });
+	}
+
+	setDebug() {
+		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
 	}
 
 	setCollision() {
@@ -120,23 +162,26 @@ class Level extends Phaser.Scene {
 		this.physics.add.collider(this.players, this.colliders);
 	}
 
-	setTimer() {
-		this.timer = this.time.addEvent({
+	setCountTimer() {
+		this.countTimer = this.time.addEvent({
 			delay: 10000,
 			callback: this.changePlayersMove,
 			callbackScope: this,
 			loop: true
 		});
+	}
 
+	updateTimer() {
+		this.updateTimerPosition();
 		this.updateTimerText();
-		console.log(this.timer);
 	}
 
 	updateTimerText() {
-		this.timerText.setText(Math.ceil(this.timer.getRemainingSeconds()));
+		this.timerText.setText(Math.ceil(this.countTimer.getRemainingSeconds()));
+	}
 
+	updateTimerPosition() {
 		let worldView = this.camera.worldView;
-
 
 		this.timerText.setPosition(worldView.x + 50, worldView.y + 50);
 	}
@@ -155,17 +200,21 @@ class Level extends Phaser.Scene {
 
 		this.hero = this.players[index];
 
-		this.camera.pan(this.hero.x, this.hero.y, 500, Phaser.Math.Easing.Circular.InOut, true, (camera, progress) => {
-			camera.panEffect.destination.x = this.hero.x;
-			camera.panEffect.destination.y = this.hero.y;
+		this.changeCameraFocus(this.hero);
+	}
+
+	changeCameraFocus(target) {
+		this.camera.pan(target.x, target.y, 500, Phaser.Math.Easing.Circular.InOut, true, (camera, progress) => {
+			camera.panEffect.destination.x = target.x;
+			camera.panEffect.destination.y = target.y;
 			if (progress === 1) {
-				camera.startFollow(this.hero, false, 0.1, 0.1);
+				camera.startFollow(target, false, 0.1, 0.1);
 			}
 		});
 	}
 
 	update() {
-		this.updateTimerText();
+		this.updateTimer();
 
 		if (this.cursors.left.isDown && !this.hero.body.touching.right) {
 			this.hero.left();
@@ -180,20 +229,6 @@ class Level extends Phaser.Scene {
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
 			this.hero.jump(); 
 		}
-
-		this.input.on('pointermove', pointer =>
-        {
-			console.log(pointer);
-			const bbox = {
-                minX: pointer.worldX - 10,
-                minY: pointer.worldY - 10,
-                maxX: pointer.worldX + 10,
-                maxY: pointer.worldY + 10
-            };
-
-			this.terrain.destroyArea(bbox);
-
-        });
 	}
 
 	/* END-USER-CODE */

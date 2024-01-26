@@ -18,6 +18,7 @@
             },
             "x": 559,
             "y": 369,
+            "physicsType": 1,
             "body.width": 250,
             "body.height": 250
         }
