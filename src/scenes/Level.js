@@ -33,7 +33,7 @@ class Level extends Phaser.Scene {
 		const bg = this.add.image(635, 525, "bg");
 
 		// timerText
-		const timerText = this.add.text(60, 154, "", {});
+		const timerText = this.add.text(608, 407, "", {});
 		timerText.text = "00";
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
@@ -72,7 +72,6 @@ class Level extends Phaser.Scene {
 	/** @type {Array<any>} */
 	team2;
 
-	
 	/* START-USER-CODE */
 
 	// Write more your code here
@@ -80,15 +79,14 @@ class Level extends Phaser.Scene {
 	create() {
 		this.editorCreate();
 
+		let camera = this.camera = this.cameras.main;
+
 		this.setCollision();
 
 		this.setTimer();
 
 		this.bg.setDepth(-1);
 
-		let camera = this.cameras.main;
-		camera.setViewport(0, 0, 1280, 720);
-		//camera.startFollow(this.hero);
 		camera.setPostPipeline()
 		let blocks = this.terrain.all();
 		blocks.forEach(element => {
@@ -113,7 +111,7 @@ class Level extends Phaser.Scene {
 
 	setTimer() {
 		this.timer = this.time.addEvent({
-			delay: 2000,
+			delay: 10000,
 			callback: this.changePlayersMove,
 			callbackScope: this,
 			loop: true
@@ -124,7 +122,12 @@ class Level extends Phaser.Scene {
 	}
 
 	updateTimerText() {
-		this.timerText.setText(Math.round(this.timer / 1000))
+		this.timerText.setText(Math.ceil(this.timer.getRemainingSeconds()));
+		
+		let worldView = this.camera.worldView;
+	
+		
+		this.timerText.setPosition(worldView.x + 50, worldView.y + 50);
 	}
 
 	changePlayersMove() {
@@ -140,31 +143,26 @@ class Level extends Phaser.Scene {
 		}
 
 		this.hero = this.players[index];
+		this.camera.startFollow(this.hero);
 	}
 
 	update() {
+		this.updateTimerText();
 
 		if (this.cursors.left.isDown && !this.hero.body.touching.right) {
-			this.hero.setVelocityX(-160);
-
-			// hero.anims.play('left', true);
+			this.hero.left();
 		}
 		else if (this.cursors.right.isDown && !this.hero.body.touching.left) {
-			this.hero.setVelocityX(160);
-
-			// hero.anims.play('right', true);
+			this.hero.right();
 		}
 		else {
-			this.hero.setVelocityX(0);
-
-			// hero.anims.play('turn');
+			this.hero.stop();
 		}
 
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
-			this.hero.setVelocityY(-250); 
+			this.hero.jump(); 
 		}
 
-		this.updateTimerText();
 		this.input.on('pointermove', pointer =>
         {
 			const bbox = {

@@ -77,8 +77,8 @@
             "id": "b6814293-5b23-462f-9290-0c564aa24b26",
             "label": "timerText",
             "scope": "PUBLIC",
-            "x": 60,
-            "y": 154,
+            "x": 608,
+            "y": 407,
             "text": "00",
             "fontSize": "50px",
             "fontStyle": "bold"
