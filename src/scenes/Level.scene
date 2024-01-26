@@ -28,7 +28,6 @@
             "originX": 0,
             "originY": 0
         },
-
         {
             "prefabId": "71426df2-98ec-49f3-8169-38e6c38e6cbd",
             "id": "9cc0d688-01e8-4af4-9322-034075178105",
@@ -38,8 +37,8 @@
             ],
             "label": "hero",
             "scope": "PUBLIC",
-            "x": 319,
-            "y": 109
+            "x": 284,
+            "y": 113
         }
     ],
     "plainObjects": [],
