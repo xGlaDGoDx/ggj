@@ -9,7 +9,21 @@ window.addEventListener('load', function () {
 		scale: {
 			mode: Phaser.Scale.FIT,
 			autoCenter: Phaser.Scale.CENTER_BOTH
-		}
+		},
+		physics:{
+			default: "arcade",
+			arcade:{
+				gravity: {y:500},
+				debug: true
+			}
+		},
+		plugins: {
+			scene: [{
+				key: "spine.SpinePlugin",
+				plugin: spine.SpinePlugin,
+				mapping: "spine"
+			  }]
+		  }
 	});
 
 	game.scene.add("Preload", Preload);
