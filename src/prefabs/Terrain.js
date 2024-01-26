@@ -6,13 +6,13 @@
 class Terrain extends Phaser.GameObjects.Image {
 
 	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 343, y ?? 420, texture || "test_platform", frame);
+		super(scene, x ?? 343, y ?? 420, texture || "guapen", frame);
 
 		/* START-USER-CTR-CODE */
-		this.text = texture || "test_platform";
-		this.splitImage(10, 10);
+		this.text = "guapen";
+		this.splitImage(4, 4);
 		this.tree = Phaser.Structs.RTree();
-		this.renderImage(x, y, 10);
+		this.renderImage(x, y, 4);
 		this.destroy();
 		/* END-USER-CTR-CODE */
 	}
@@ -60,7 +60,7 @@ class Terrain extends Phaser.GameObjects.Image {
 		let count = this.scene.textures.get(this.text).getFrameNames().length;
 		for(let i = 0; i < count; i++){
 			let pixel = this.getPixel(0, 0, i);
-			
+
 			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
 			if(this.checkForAddCollision(i, splitSize)){
 				this.scene.physics.add.existing(sprite);
