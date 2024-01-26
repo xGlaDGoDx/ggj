@@ -24,7 +24,8 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	fire(x, y, power){
-		new Bullet(this.sc, this.x, this.y, "bullet", undefined, x, y, power);
+		let bullet = new Bullet(this.sc, this.x, this.y, x, y, 500, "bullet");
+		this.sc.add.existing(bullet);
 	}
 
 	/* END-USER-CODE */

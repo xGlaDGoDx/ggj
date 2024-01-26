@@ -165,6 +165,7 @@ class Level extends Phaser.Scene {
 
 		this.input.on('pointermove', pointer =>
         {
+			console.log(pointer);
 			const bbox = {
                 minX: pointer.x - 10,
                 minY: pointer.y - 10,
