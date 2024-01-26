@@ -20,14 +20,21 @@ class Level extends Phaser.Scene {
 		const terrain = new Terrain(this, -7, 337, "test_platform");
 		this.add.existing(terrain);
 		terrain.setOrigin(0, 0);
-		// hero
-		const hero = new Hero(this, 319, 109);
-		this.add.existing(hero);
 
-		this.hero = hero;
+		// lists
+		const colliders = [terrain];
+		const players = [];
+
+		this.colliders = colliders;
+		this.players = players;
 
 		this.events.emit("scene-awake");
 	}
+
+	/** @type {Terrain[]} */
+	colliders;
+	/** @type {Array<any>} */
+	players;
 
 	/* START-USER-CODE */
 
@@ -44,20 +51,20 @@ class Level extends Phaser.Scene {
 
 		if (this.cursors.left.isDown) {
 			this.hero.setVelocityX(-160);
-		
+
 			// hero.anims.play('left', true);
 		}
 		else if (this.cursors.right.isDown) {
 			this.hero.setVelocityX(160);
-		
+
 			// hero.anims.play('right', true);
 		}
 		else {
 			this.hero.setVelocityX(0);
-		
+
 			// hero.anims.play('turn');
 		}
-		
+
 		if (this.cursors.up.isDown) { //&& this.hero.body.touching.down)
 			this.hero.setVelocityY(-150);
 		}

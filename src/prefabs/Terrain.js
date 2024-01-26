@@ -72,6 +72,10 @@ class Terrain extends Phaser.GameObjects.Image {
 		}
 	}
 
+	all(){
+		return this.tree.all();
+	}
+
 	/* END-USER-CODE */
 }
 
