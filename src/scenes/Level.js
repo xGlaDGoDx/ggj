@@ -79,6 +79,8 @@ class Level extends Phaser.Scene {
 
 		this.setTimer();
 
+		this.bg.depth(-1);
+
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
 
