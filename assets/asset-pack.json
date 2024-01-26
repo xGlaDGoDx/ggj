@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/bg.png",
+                "type": "image",
+                "key": "bg"
+            },
+            {
                 "url": "assets/dino.png",
                 "key": "dino",
                 "type": "image"

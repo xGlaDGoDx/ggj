@@ -24,8 +24,8 @@
             "texture": {
                 "key": "test_platform"
             },
-            "x": -7,
-            "y": 337,
+            "x": -3,
+            "y": 205,
             "originX": 0,
             "originY": 0
         },
@@ -34,12 +34,43 @@
             "id": "9e719f45-fde2-46ea-8a4a-7d93411f18eb",
             "unlock": [
                 "x",
-                "y"
+                "y",
+                "hitArea.x",
+                "hitArea.width",
+                "hitArea.height",
+                "hitArea.shape",
+                "hitArea.y",
+                "hitArea.radius",
+                "hitArea.points",
+                "hitArea.alphaTolerance",
+                "body.offset.x",
+                "body.offset.y",
+                "body.width",
+                "body.height"
             ],
             "label": "hero",
             "scope": "PUBLIC",
+            "hitArea.shape": "CIRCLE",
+            "hitArea.x": 15,
+            "hitArea.y": 14,
+            "hitArea.radius": 89.1237011846265,
             "x": 133,
-            "y": 15
+            "y": 15,
+            "body.width": 32,
+            "body.height": 32,
+            "body.offset.x": 0,
+            "body.offset.y": 0
+        },
+        {
+            "type": "Image",
+            "id": "1668fc3c-ebd7-44fa-87d2-8b10abd89e7b",
+            "label": "bg",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg"
+            },
+            "x": 635,
+            "y": 525
         }
     ],
     "plainObjects": [],

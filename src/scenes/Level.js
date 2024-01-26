@@ -17,13 +17,20 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// terrain
-		const terrain = new Terrain(this, -7, 337, "test_platform");
+		const terrain = new Terrain(this, -3, 205, "test_platform");
 		this.add.existing(terrain);
 		terrain.setOrigin(0, 0);
 
 		// hero
 		const hero = new Hero(this, 133, 15);
 		this.add.existing(hero);
+		hero.removeInteractive();
+		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
+		hero.body.setOffset(0, 0);
+		hero.body.setSize(32, 32, false);
+
+		// bg
+		const bg = this.add.image(635, 525, "bg");
 
 		// lists
 		const colliders = [];
@@ -31,6 +38,7 @@ class Level extends Phaser.Scene {
 
 		this.terrain = terrain;
 		this.hero = hero;
+		this.bg = bg;
 		this.colliders = colliders;
 		this.players = players;
 
@@ -41,6 +49,8 @@ class Level extends Phaser.Scene {
 	terrain;
 	/** @type {Hero} */
 	hero;
+	/** @type {Phaser.GameObjects.Image} */
+	bg;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -52,6 +62,12 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
+		this.bg.setDepth(-1);
+
+		let camera = this.cameras.main;
+		camera.setViewport(0, 0, 1280, 720);
+		camera.startFollow(this.hero);
+		camera.setPostPipeline()
 		let blocks = this.terrain.all();
 		blocks.forEach(element => {
 			this.colliders.push(element.sprite);

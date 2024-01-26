@@ -35,6 +35,24 @@ class Terrain extends Phaser.GameObjects.Image {
 		return color;
 	}
 
+	checkForAddCollision(id, spritSize){
+		let air = false;
+		let notAir = 0;
+		for(let i = 0; i < spritSize; i++){
+			for(let j = 0; j < spritSize; j++){
+				let pixel = this.getPixel(i, j, id);
+				if(pixel.r === 0 && pixel.g === 0 && pixel.b === 0){
+					air = true;
+				}
+				if(pixel.r !== 0 && pixel.g !== 0 && pixel.b !== 0){
+					notAir++;
+				}
+			}
+		}
+
+		return air && notAir;
+	}
+
 	renderImage(x, y, splitSize){
 		let tex = this.scene.textures.get(this.text).getSourceImage();
 		let sizeX = tex.width;
@@ -42,12 +60,13 @@ class Terrain extends Phaser.GameObjects.Image {
 		let count = this.scene.textures.get(this.text).getFrameNames().length;
 		for(let i = 0; i < count; i++){
 			let pixel = this.getPixel(0, 0, i);
-
-			if(pixel.r === 0 && pixel.g === 0 && pixel.b === 0){
-				continue;
-			}
 			
-			let sprite = this.scene.physics.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
+			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
+			if(this.checkForAddCollision(i, splitSize)){
+				this.scene.physics.add.existing(sprite);
+				sprite.body.setAllowGravity(false);
+				sprite.body.pushable = false;
+			}
 			let bounds = sprite.getBounds();
 			this.tree.insert({
 				left: bounds.left,
@@ -56,8 +75,6 @@ class Terrain extends Phaser.GameObjects.Image {
 				bottom: bounds.bottom,
 				sprite: sprite
 			});
-			sprite.body.setAllowGravity(false);
-			sprite.body.pushable = false;
 		}
 	}
 
