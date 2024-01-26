@@ -22,16 +22,26 @@ class Level extends Phaser.Scene {
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 284, 113);
+		const hero = new Hero(this, 133, 15);
 		this.add.existing(hero);
 
+		// lists
+		const colliders = [terrain];
+		const players = [];
+
 		this.hero = hero;
+		this.colliders = colliders;
+		this.players = players;
 
 		this.events.emit("scene-awake");
 	}
 
 	/** @type {Hero} */
 	hero;
+	/** @type {Terrain[]} */
+	colliders;
+	/** @type {Array<any>} */
+	players;
 
 	/* START-USER-CODE */
 

@@ -30,15 +30,15 @@
         },
         {
             "prefabId": "71426df2-98ec-49f3-8169-38e6c38e6cbd",
-            "id": "9cc0d688-01e8-4af4-9322-034075178105",
+            "id": "9e719f45-fde2-46ea-8a4a-7d93411f18eb",
             "unlock": [
                 "x",
                 "y"
             ],
             "label": "hero",
             "scope": "PUBLIC",
-            "x": 284,
-            "y": 113
+            "x": 133,
+            "y": 15
         }
     ],
     "plainObjects": [],
@@ -47,5 +47,18 @@
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 5
-    }
+    },
+    "lists": [
+        {
+            "id": "2d48da9c-198b-4fbd-b910-592eaa4b8eb0",
+            "label": "colliders",
+            "objectIds": [
+                "3912cb2d-814b-4748-9955-eb5344542f5e"
+            ]
+        },
+        {
+            "id": "4c27a901-4e55-4de6-8113-d2c107521a7d",
+            "label": "players"
+        }
+    ]
 }
