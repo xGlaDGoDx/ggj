@@ -83,7 +83,12 @@ class Terrain extends Phaser.GameObjects.Image {
 	}
 
 	destroyArea(rect){
-		let area = this.getCollideArea(rect);
+		let area = this.tree.search(rect);
+		let area2 = this.tree.search({
+			minX: rect.minX+10,
+			minY: rect.minY-10,
+			maxX:rect.maxX+10,
+			maxY:rect.maxY+10})
 		for(let i = 0; i < area.length; i++){
 			area[i].sprite.destroy();
 		}

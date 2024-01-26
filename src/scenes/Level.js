@@ -66,7 +66,7 @@ class Level extends Phaser.Scene {
 
 		let camera = this.cameras.main;
 		camera.setViewport(0, 0, 1280, 720);
-		camera.startFollow(this.hero);
+		//camera.startFollow(this.hero);
 		camera.setPostPipeline()
 		let blocks = this.terrain.all();
 		blocks.forEach(element => {
@@ -98,6 +98,19 @@ class Level extends Phaser.Scene {
 		if (this.cursors.up.isDown && this.hero.body.touching.down) { 
 			this.hero.setVelocityY(-250);
 		}
+
+		this.input.on('pointermove', pointer =>
+        {
+			const bbox = {
+                minX: pointer.x - 10,
+                minY: pointer.y - 10,
+                maxX: pointer.x + 10,
+                maxY: pointer.y + 10
+            };
+
+			this.terrain.destroyArea(bbox);
+
+        });
 	}
 
 	/* END-USER-CODE */
