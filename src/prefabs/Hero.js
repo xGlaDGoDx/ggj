@@ -21,6 +21,21 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 	/* START-USER-CODE */
 
+	left() {
+		this.setVelocityX(-160);
+	}
+
+	right() {
+		this.setVelocityX(160);
+	}
+
+	jump() {
+		this.setVelocityY(-250);
+	}
+
+	stop() {
+		this.setVelocityX(0);
+	}
 	// Write your code here.
 
 	/* END-USER-CODE */

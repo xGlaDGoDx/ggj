@@ -22,7 +22,7 @@ class Level extends Phaser.Scene {
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 133, 15);
+		const hero = new Hero(this, 133, 596);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -32,15 +32,23 @@ class Level extends Phaser.Scene {
 		// bg
 		const bg = this.add.image(635, 525, "bg");
 
+		// hero_1
+		const hero_1 = new Hero(this, 245, 587);
+		this.add.existing(hero_1);
+
 		// lists
 		const colliders = [];
-		const players = [hero];
+		const players = [hero, hero_1];
+		const team1 = [hero];
+		const team2 = [hero_1];
 
 		this.terrain = terrain;
 		this.hero = hero;
 		this.bg = bg;
 		this.colliders = colliders;
 		this.players = players;
+		this.team1 = team1;
+		this.team2 = team2;
 
 		this.events.emit("scene-awake");
 	}
@@ -55,7 +63,7 @@ class Level extends Phaser.Scene {
 	colliders;
 	/** @type {Hero[]} */
 	players;
-
+	
 	/* START-USER-CODE */
 
 	// Write more your code here
@@ -74,7 +82,43 @@ class Level extends Phaser.Scene {
 		});
 		this.physics.add.collider(this.players, this.colliders);
 		this.cursors = this.input.keyboard.createCursorKeys();
-		console.log(this.cursors);
+		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
+
+		this.targetHeroIndex = 0;
+
+		this.setHeroTarget(this.targetHeroIndex);
+	}
+
+	setCollision() {
+		this.terrain.all().forEach(block => {
+			this.colliders.push(block.sprite);
+		});
+
+		this.physics.add.collider(this.players, this.colliders);
+	}
+
+	setTimer() {
+		this.timer = this.time.addEvent({
+			delay: 2000,
+			callback: this.changePlayersMove,
+			callbackScope: this,
+			loop: true
+		})
+	}
+
+	changePlayersMove() {
+		this.targetHeroIndex = (this.targetHeroIndex + 1) % this.players.length;
+		
+		console.log("change target:", this.targetHeroIndex);
+		this.setHeroTarget(this.targetHeroIndex);
+	}
+
+	setHeroTarget(index) {
+		if (this.hero) {
+			this.hero.stop();
+		}
+
+		this.hero = this.players[index];
 	}
 
 	update() {
@@ -95,8 +139,8 @@ class Level extends Phaser.Scene {
 			// hero.anims.play('turn');
 		}
 
-		if (this.cursors.up.isDown && this.hero.body.touching.down) { 
-			this.hero.setVelocityY(-250);
+		if (this.cursors.up.isDown && this.hero.body.touching.down) {
+			this.hero.setVelocityY(-250); 
 		}
 
 		this.input.on('pointermove', pointer =>

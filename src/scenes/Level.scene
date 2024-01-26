@@ -89,7 +89,22 @@
             "id": "4c27a901-4e55-4de6-8113-d2c107521a7d",
             "label": "players",
             "objectIds": [
+                "9e719f45-fde2-46ea-8a4a-7d93411f18eb",
+                "56c3f96f-24aa-4836-b622-49b368c92a81"
+            ]
+        },
+        {
+            "id": "dc638e25-a577-4f9b-af5f-ef47a921b61b",
+            "label": "team1",
+            "objectIds": [
                 "9e719f45-fde2-46ea-8a4a-7d93411f18eb"
+            ]
+        },
+        {
+            "id": "d1d66073-4acb-4530-8575-8dc3bb63cd9b",
+            "label": "team2",
+            "objectIds": [
+                "56c3f96f-24aa-4836-b622-49b368c92a81"
             ]
         }
     ]
