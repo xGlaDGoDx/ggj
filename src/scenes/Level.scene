@@ -20,6 +20,7 @@
                 "texture"
             ],
             "label": "terrain",
+            "scope": "PUBLIC",
             "texture": {
                 "key": "test_platform"
             },
@@ -51,14 +52,14 @@
     "lists": [
         {
             "id": "2d48da9c-198b-4fbd-b910-592eaa4b8eb0",
-            "label": "colliders",
-            "objectIds": [
-                "3912cb2d-814b-4748-9955-eb5344542f5e"
-            ]
+            "label": "colliders"
         },
         {
             "id": "4c27a901-4e55-4de6-8113-d2c107521a7d",
-            "label": "players"
+            "label": "players",
+            "objectIds": [
+                "9e719f45-fde2-46ea-8a4a-7d93411f18eb"
+            ]
         }
     ]
 }

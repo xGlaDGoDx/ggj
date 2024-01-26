@@ -26,9 +26,10 @@ class Level extends Phaser.Scene {
 		this.add.existing(hero);
 
 		// lists
-		const colliders = [terrain];
-		const players = [];
+		const colliders = [];
+		const players = [hero];
 
+		this.terrain = terrain;
 		this.hero = hero;
 		this.colliders = colliders;
 		this.players = players;
@@ -36,11 +37,13 @@ class Level extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Terrain} */
+	terrain;
 	/** @type {Hero} */
 	hero;
-	/** @type {Terrain[]} */
-	colliders;
 	/** @type {Array<any>} */
+	colliders;
+	/** @type {Hero[]} */
 	players;
 
 	/* START-USER-CODE */
@@ -49,7 +52,11 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-
+		let blocks = this.terrain.all();
+		blocks.forEach(element => {
+			this.colliders.push(element.sprite);
+		});
+		this.physics.add.collider(this.players, this.colliders);
 		this.cursors = this.input.keyboard.createCursorKeys();
 		console.log(this.cursors);
 	}
