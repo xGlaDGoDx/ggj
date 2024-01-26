@@ -22,7 +22,7 @@ class Level extends Phaser.Scene {
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 133, 596);
+		const hero = new Hero(this, 133, 15);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -32,19 +32,21 @@ class Level extends Phaser.Scene {
 		// bg
 		const bg = this.add.image(635, 525, "bg");
 
-		// hero_1
-		const hero_1 = new Hero(this, 245, 587);
-		this.add.existing(hero_1);
+		// timerText
+		const timerText = this.add.text(60, 154, "", {});
+		timerText.text = "00";
+		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
 		// lists
 		const colliders = [];
-		const players = [hero, hero_1];
+		const players = [hero];
 		const team1 = [hero];
-		const team2 = [hero_1];
+		const team2 = [];
 
 		this.terrain = terrain;
 		this.hero = hero;
 		this.bg = bg;
+		this.timerText = timerText;
 		this.colliders = colliders;
 		this.players = players;
 		this.team1 = team1;
@@ -59,13 +61,15 @@ class Level extends Phaser.Scene {
 	hero;
 	/** @type {Phaser.GameObjects.Image} */
 	bg;
+	/** @type {Phaser.GameObjects.Text} */
+	timerText;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
 	players;
 	/** @type {Hero[]} */
 	team1;
-	/** @type {Hero[]} */
+	/** @type {Array<any>} */
 	team2;
 
 	/* START-USER-CODE */
@@ -74,12 +78,12 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-		
+
 		this.setCollision();
 
 		this.setTimer();
 
-		this.bg.depth(-1);
+		this.bg.setDepth(-1);
 
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
@@ -103,12 +107,19 @@ class Level extends Phaser.Scene {
 			callback: this.changePlayersMove,
 			callbackScope: this,
 			loop: true
-		})
+		});
+
+		this.updateTimerText();
+		console.log(this.timer);
+	}
+
+	updateTimerText() {
+		this.timerText.setText(Math.round(this.timer / 1000))
 	}
 
 	changePlayersMove() {
 		this.targetHeroIndex = (this.targetHeroIndex + 1) % this.players.length;
-		
+
 		console.log("change target:", this.targetHeroIndex);
 		this.setHeroTarget(this.targetHeroIndex);
 	}
@@ -142,6 +153,8 @@ class Level extends Phaser.Scene {
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
 			this.hero.jump(); 
 		}
+
+		this.updateTimerText();
 	}
 
 	/* END-USER-CODE */
