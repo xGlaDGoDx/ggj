@@ -63,12 +63,12 @@ class Level extends Phaser.Scene {
 
 	update() {
 
-		if (this.cursors.left.isDown) {
+		if (this.cursors.left.isDown && !this.hero.body.touching.right) {
 			this.hero.setVelocityX(-160);
 
 			// hero.anims.play('left', true);
 		}
-		else if (this.cursors.right.isDown) {
+		else if (this.cursors.right.isDown && !this.hero.body.touching.left) {
 			this.hero.setVelocityX(160);
 
 			// hero.anims.play('right', true);
