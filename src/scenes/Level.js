@@ -16,47 +16,11 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// dino
-		const dino = this.add.image(640, 288, "dino");
-		dino.setInteractive(new Phaser.Geom.Rectangle(0, 0, 250, 250), Phaser.Geom.Rectangle.Contains);
+		// hero
+		const hero = new Hero(this, 319, 109);
+		this.add.existing(hero);
 
-		// onPointerDownScript
-		const onPointerDownScript = new OnPointerDownScript(dino);
-
-		// pushActionScript
-		new PushActionScript(onPointerDownScript);
-
-		// onAwakeScript
-		const onAwakeScript = new OnAwakeScript(dino);
-
-		// moveInSceneActionScript
-		const moveInSceneActionScript = new MoveInSceneActionScript(onAwakeScript);
-
-		// welcome
-		const welcome = this.add.text(640, 478, "", {});
-		welcome.setOrigin(0.5, 0.5);
-		welcome.text = "Phaser 3 + Phaser Editor 2D";
-		welcome.setStyle({ "fontFamily": "Arial", "fontSize": "30px" });
-
-		// onAwakeScript_1
-		const onAwakeScript_1 = new OnAwakeScript(welcome);
-
-		// fadeActionScript
-		const fadeActionScript = new FadeActionScript(onAwakeScript_1);
-
-		// moveInSceneActionScript (prefab fields)
-		moveInSceneActionScript.from = "TOP";
-
-		// moveInSceneActionScript (components)
-		const moveInSceneActionScriptDurationConfigComp = new DurationConfigComp(moveInSceneActionScript);
-		moveInSceneActionScriptDurationConfigComp.duration = 1000;
-
-		// fadeActionScript (prefab fields)
-		fadeActionScript.fadeDirection = "FadeIn";
-
-		// fadeActionScript (components)
-		const fadeActionScriptDurationConfigComp = new DurationConfigComp(fadeActionScript);
-		fadeActionScriptDurationConfigComp.duration = 1500;
+		this.hero = hero;
 
 		this.events.emit("scene-awake");
 	}
@@ -66,8 +30,33 @@ class Level extends Phaser.Scene {
 	// Write more your code here
 
 	create() {
-
 		this.editorCreate();
+
+		this.cursors = this.input.keyboard.createCursorKeys();
+		console.log(this.cursors);
+	}
+
+	update() {
+
+		if (this.cursors.left.isDown) {
+			this.hero.setVelocityX(-160);
+		
+			// hero.anims.play('left', true);
+		}
+		else if (this.cursors.right.isDown) {
+			this.hero.setVelocityX(160);
+		
+			// hero.anims.play('right', true);
+		}
+		else {
+			this.hero.setVelocityX(0);
+		
+			// hero.anims.play('turn');
+		}
+		
+		if (this.cursors.up.isDown) { //&& this.hero.body.touching.down)
+			this.hero.setVelocityY(-150);
+		}
 	}
 
 	/* END-USER-CODE */
