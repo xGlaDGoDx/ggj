@@ -72,6 +72,7 @@ class Level extends Phaser.Scene {
 	/** @type {Array<any>} */
 	team2;
 
+	
 	/* START-USER-CODE */
 
 	// Write more your code here
@@ -85,6 +86,15 @@ class Level extends Phaser.Scene {
 
 		this.bg.setDepth(-1);
 
+		let camera = this.cameras.main;
+		camera.setViewport(0, 0, 1280, 720);
+		//camera.startFollow(this.hero);
+		camera.setPostPipeline()
+		let blocks = this.terrain.all();
+		blocks.forEach(element => {
+			this.colliders.push(element.sprite);
+		});
+		this.physics.add.collider(this.players, this.colliders);
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
 
@@ -134,27 +144,39 @@ class Level extends Phaser.Scene {
 
 	update() {
 
-		if (this.cursors.left.isDown && !this.hero.body.touching.left) {
-			this.hero.left();
+		if (this.cursors.left.isDown && !this.hero.body.touching.right) {
+			this.hero.setVelocityX(-160);
 
 			// hero.anims.play('left', true);
 		}
-		else if (this.cursors.right.isDown && !this.hero.body.touching.right) {
-			this.hero.right();
+		else if (this.cursors.right.isDown && !this.hero.body.touching.left) {
+			this.hero.setVelocityX(160);
 
 			// hero.anims.play('right', true);
 		}
 		else {
-			this.hero.stop();
+			this.hero.setVelocityX(0);
 
 			// hero.anims.play('turn');
 		}
 
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
-			this.hero.jump(); 
+			this.hero.setVelocityY(-250); 
 		}
 
 		this.updateTimerText();
+		this.input.on('pointermove', pointer =>
+        {
+			const bbox = {
+                minX: pointer.x - 10,
+                minY: pointer.y - 10,
+                maxX: pointer.x + 10,
+                maxY: pointer.y + 10
+            };
+
+			this.terrain.destroyArea(bbox);
+
+        });
 	}
 
 	/* END-USER-CODE */
