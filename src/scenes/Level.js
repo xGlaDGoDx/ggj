@@ -22,7 +22,7 @@ class Level extends Phaser.Scene {
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 133, 15);
+		const hero = new Hero(this, 867, 448);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -37,9 +37,17 @@ class Level extends Phaser.Scene {
 		timerText.text = "00";
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
+		// hero_1
+		const hero_1 = new Hero(this, 794, 449);
+		this.add.existing(hero_1);
+		hero_1.removeInteractive();
+		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
+		hero_1.body.setOffset(0, 0);
+		hero_1.body.setSize(32, 32, false);
+
 		// lists
-		const colliders = [];
-		const players = [hero];
+		const colliders = [hero_1];
+		const players = [hero, hero_1];
 		const team1 = [hero];
 		const team2 = [];
 
@@ -47,6 +55,7 @@ class Level extends Phaser.Scene {
 		this.hero = hero;
 		this.bg = bg;
 		this.timerText = timerText;
+		this.hero_1 = hero_1;
 		this.colliders = colliders;
 		this.players = players;
 		this.team1 = team1;
@@ -63,7 +72,9 @@ class Level extends Phaser.Scene {
 	bg;
 	/** @type {Phaser.GameObjects.Text} */
 	timerText;
-	/** @type {Array<any>} */
+	/** @type {Hero} */
+	hero_1;
+	/** @type {Hero[]} */
 	colliders;
 	/** @type {Hero[]} */
 	players;
@@ -123,10 +134,10 @@ class Level extends Phaser.Scene {
 
 	updateTimerText() {
 		this.timerText.setText(Math.ceil(this.timer.getRemainingSeconds()));
-		
+
 		let worldView = this.camera.worldView;
-	
-		
+
+
 		this.timerText.setPosition(worldView.x + 50, worldView.y + 50);
 	}
 
@@ -143,7 +154,14 @@ class Level extends Phaser.Scene {
 		}
 
 		this.hero = this.players[index];
-		this.camera.startFollow(this.hero);
+
+		this.camera.pan(this.hero.x, this.hero.y, 500, Phaser.Math.Easing.Circular.InOut, true, (camera, progress) => {
+			camera.panEffect.destination.x = this.hero.x;
+			camera.panEffect.destination.y = this.hero.y;
+			if (progress === 1) {
+				camera.startFollow(this.hero, false, 0.1, 0.1);
+			}
+		});
 	}
 
 	update() {
@@ -166,10 +184,10 @@ class Level extends Phaser.Scene {
 		this.input.on('pointermove', pointer =>
         {
 			const bbox = {
-                minX: pointer.x - 10,
-                minY: pointer.y - 10,
-                maxX: pointer.x + 10,
-                maxY: pointer.y + 10
+                minX: pointer.worldX - 10,
+                minY: pointer.worldY - 10,
+                maxX: pointer.worldX + 10,
+                maxY: pointer.worldY + 10
             };
 
 			this.terrain.destroyArea(bbox);
