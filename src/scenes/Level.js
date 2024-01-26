@@ -80,7 +80,7 @@ class Level extends Phaser.Scene {
 		}
 
 		if (this.cursors.up.isDown && this.hero.body.touching.down) { 
-			this.hero.setVelocityY(-150);
+			this.hero.setVelocityY(-250);
 		}
 	}
 

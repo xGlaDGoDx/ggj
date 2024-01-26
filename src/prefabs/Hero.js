@@ -12,7 +12,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		scene.physics.add.existing(this, false);
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
-		this.body.setSize(32, 32, false);
+		this.body.setCircle(20);
 
 		/* START-USER-CTR-CODE */
 

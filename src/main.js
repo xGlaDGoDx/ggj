@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
 		physics:{
 			default: "arcade",
 			arcade:{
-				gravity: {y:500},
+				gravity: {y:750},
 				debug: true
 			}
 		},

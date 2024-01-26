@@ -19,8 +19,10 @@
             "y": 157,
             "collideWorldBounds": true,
             "onWorldBounds": true,
-            "body.width": 32,
-            "body.height": 32
+            "bodyGeometry": 0,
+            "radius": 20,
+            "body.width": 128,
+            "body.height": 128
         }
     ],
     "plainObjects": [],
