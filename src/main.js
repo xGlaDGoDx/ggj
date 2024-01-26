@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
 				plugin: spine.SpinePlugin,
 				mapping: "spine"
 			  }]
-		  }
+		}
 	});
 
 	game.scene.add("Preload", Preload);

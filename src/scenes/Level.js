@@ -16,6 +16,10 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		// terrain
+		const terrain = new Terrain(this, -7, 337, "test_platform");
+		this.add.existing(terrain);
+		terrain.setOrigin(0, 0);
 		// hero
 		const hero = new Hero(this, 319, 109);
 		this.add.existing(hero);
