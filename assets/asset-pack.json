@@ -37,6 +37,16 @@
                 "key": "gun"
             },
             {
+                "url": "assets/ui/hp_bg_green.png",
+                "type": "image",
+                "key": "hp_bg_green"
+            },
+            {
+                "url": "assets/ui/hp_bg_red.png",
+                "type": "image",
+                "key": "hp_bg_red"
+            },
+            {
                 "url": "assets/island.png",
                 "type": "image",
                 "key": "island"
