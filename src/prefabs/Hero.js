@@ -36,7 +36,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	stop() {
-		if (this.body.touching.down) 
+		if (this.body.touching.down) {
 			this.setVelocityX(0);
 		}
 	}
