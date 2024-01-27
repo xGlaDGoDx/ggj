@@ -62,17 +62,6 @@
             "body.offset.y": 0
         },
         {
-            "type": "Image",
-            "id": "1668fc3c-ebd7-44fa-87d2-8b10abd89e7b",
-            "label": "bg",
-            "scope": "PUBLIC",
-            "texture": {
-                "key": "bg"
-            },
-            "x": 635,
-            "y": 525
-        },
-        {
             "type": "Text",
             "id": "b6814293-5b23-462f-9290-0c564aa24b26",
             "label": "timerText",
@@ -153,6 +142,10 @@
             "objectIds": [
                 "56c3f96f-24aa-4836-b622-49b368c92a81"
             ]
+        },
+        {
+            "id": "e9f29417-82b0-488f-b854-bd6f38aaa5b0",
+            "label": "bullets"
         }
     ]
 }

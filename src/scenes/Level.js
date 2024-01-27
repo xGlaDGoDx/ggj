@@ -29,9 +29,6 @@ class Level extends Phaser.Scene {
 		hero.body.setOffset(0, 0);
 		hero.body.setSize(32, 32, false);
 
-		// bg
-		const bg = this.add.image(635, 525, "bg");
-
 		// timerText
 		const timerText = this.add.text(608, 407, "", {});
 		timerText.text = "00";
@@ -45,23 +42,23 @@ class Level extends Phaser.Scene {
 		hero_1.body.setOffset(0, 0);
 		hero_1.body.setSize(32, 32, false);
 
-		// gun
-		const gun = new Gun(this, 640, 267);
-		this.add.existing(gun);
-
 		// lists
 		const colliders = [hero_1];
 		const players = [hero, hero_1];
+		const team1 = [hero];
+		const team2 = [];
+		const bullets = [];
 
 		this.terrain = terrain;
 		this.hero = hero;
-		this.bg = bg;
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
-		this.gun = gun;
 		this.colliders = colliders;
 		this.players = players;
-		
+		this.team1 = team1;
+		this.team2 = team2;
+		this.bullets = bullets;
+
 		this.events.emit("scene-awake");
 	}
 
@@ -69,18 +66,20 @@ class Level extends Phaser.Scene {
 	terrain;
 	/** @type {Hero} */
 	hero;
-	/** @type {Phaser.GameObjects.Image} */
-	bg;
 	/** @type {Phaser.GameObjects.Text} */
 	timerText;
 	/** @type {Hero} */
 	hero_1;
-	/** @type {Gun} */
-	gun;
 	/** @type {Hero[]} */
 	colliders;
 	/** @type {Hero[]} */
 	players;
+	/** @type {Hero[]} */
+	team1;
+	/** @type {Array<any>} */
+	team2;
+	/** @type {Array<any>} */
+	bullets;
 
 	/* START-USER-CODE */
 
@@ -97,7 +96,7 @@ class Level extends Phaser.Scene {
 		this.setCountTimer();
 		this.updateTimer();
 
-		this.bg.setDepth(-1);
+
 
 		this.targetHeroIndex = 0;
 		this.setHeroTarget(this.targetHeroIndex);
@@ -130,23 +129,12 @@ class Level extends Phaser.Scene {
         });
 
 		this.input.on('pointerdown', pointer => {
-			this.gun.fire(pointer.worldX, pointer.worldY);
+			this.hero.gun.fire(pointer.worldX, pointer.worldY, 900);
 		});
 
 		this.input.on('pointermove', pointer =>
         {
-
-			this.gun.rotate(pointer.worldX, pointer.worldY);
-
-			// const bbox = {
-            //     minX: pointer.worldX - 10,
-            //     minY: pointer.worldY - 10,
-            //     maxX: pointer.worldX + 10,
-            //     maxY: pointer.worldY + 10
-            // };
-
-			// this.terrain.destroyArea(bbox);
-
+			this.hero.gun.rotate(pointer.worldX, pointer.worldY);
         });
 	}
 
@@ -160,6 +148,9 @@ class Level extends Phaser.Scene {
 		});
 
 		this.physics.add.collider(this.players, this.colliders);
+		this.physics.add.overlap(this.bullets, this.colliders, (bullet, block) => {
+			bullet.onCollide();
+		});
 	}
 
 	setCountTimer() {
@@ -200,7 +191,7 @@ class Level extends Phaser.Scene {
 
 		this.hero = this.players[index];
 
-		this.changeCameraFocus(this.hero);
+		//this.changeCameraFocus(this.hero);
 	}
 
 	changeCameraFocus(target) {
@@ -229,6 +220,10 @@ class Level extends Phaser.Scene {
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
 			this.hero.jump(); 
 		}
+
+		this.players.forEach((player) =>{
+			player.synchronize();
+		});
 	}
 
 	/* END-USER-CODE */

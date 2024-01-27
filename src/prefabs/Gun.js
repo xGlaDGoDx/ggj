@@ -8,8 +8,7 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 559, y ?? 369, texture || "dino", frame);
 
-		scene.physics.add.existing(this, false);
-		this.body.setSize(250, 250, false);
+		scene.add.existing(this, false);
 
 		/* START-USER-CTR-CODE */
 		this.sc = scene;
@@ -24,7 +23,7 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	fire(x, y, power){
-		let bullet = new Bullet(this.sc, this.x, this.y, x, y, 500, "bullet");
+		let bullet = new Bullet(this.sc, this.x, this.y, x, y, power, "bullet");
 		this.sc.add.existing(bullet);
 	}
 

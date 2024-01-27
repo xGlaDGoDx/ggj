@@ -15,7 +15,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.body.setSize(32, 32, false);
 
 		/* START-USER-CTR-CODE */
-
+		this.gun = new Gun(scene, x, y, "dino");
 		/* END-USER-CTR-CODE */
 	}
 
@@ -36,9 +36,11 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	stop() {
 		this.setVelocityX(0);
 	}
-	// Write your code here.
 
-	/* END-USER-CODE */
+	synchronize(){
+		this.gun.x = this.x;
+		this.gun.y = this.y;
+	}
 }
 
 /* END OF COMPILED CODE */
