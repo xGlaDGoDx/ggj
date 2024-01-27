@@ -100,7 +100,7 @@ class Terrain extends Phaser.GameObjects.Image {
 
 	destroyArea(rect){
 		let area = this.tree.search(rect);
-
+		console.log(area);
 		for(let i = 0; i < area.length; i++){
 			area[i].sprite.destroy();
 			this.tree.remove(area[i]);
