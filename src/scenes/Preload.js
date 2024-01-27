@@ -9,6 +9,7 @@ class Preload extends Phaser.Scene {
 		super("Preload");
 
 		/* START-USER-CTR-CODE */
+		
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}

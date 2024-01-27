@@ -23,8 +23,10 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 
 		if (Math.abs(angile) > Math.PI / 2 && Math.abs(angile) < 3 * Math.PI / 2) {
 			this.setFlipY(true);
+			this.setDepth(1);
 		} else {
 			this.setFlipY(false);
+			this.setDepth(-1);
 		}
 
 		this.setRotation(angile);

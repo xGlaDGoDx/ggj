@@ -2,6 +2,8 @@
     "id": "71426df2-98ec-49f3-8169-38e6c38e6cbd",
     "sceneType": "PREFAB",
     "settings": {
+        "snapWidth": 32,
+        "snapHeight": 50,
         "preloadMethodName": "",
         "preloadPackFiles": [],
         "createMethodName": ""
@@ -12,16 +14,17 @@
             "id": "4662d08f-3f55-4558-a6f8-2d518a33706e",
             "label": "arcadesprite_1",
             "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 32,
-            "hitArea.height": 32,
+            "hitArea.width": 61,
+            "hitArea.height": 96,
             "texture": {},
-            "x": 407,
-            "y": 157,
+            "x": 594,
+            "y": 306,
             "collideWorldBounds": true,
             "onWorldBounds": true,
+            "bodyGeometry": 0,
             "radius": 9,
-            "body.width": 32,
-            "body.height": 32
+            "body.width": 18,
+            "body.height": 18
         }
     ],
     "plainObjects": [],

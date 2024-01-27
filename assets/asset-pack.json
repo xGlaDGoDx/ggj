@@ -7,6 +7,26 @@
                 "key": "bg"
             },
             {
+                "url": "assets/capibara/capibara.json",
+                "type": "spineJson",
+                "key": "capibara"
+            },
+            {
+                "url": "assets/capibara/capibara.atlas",
+                "type": "spineAtlas",
+                "key": "capibara-atlas"
+            },
+            {
+                "url": "assets/cat_banana/cat_banana.json",
+                "type": "spineJson",
+                "key": "cat_banana"
+            },
+            {
+                "url": "assets/cat_banana/cat_banana.atlas",
+                "type": "spineAtlas",
+                "key": "cat_banana-atlas"
+            },
+            {
                 "url": "assets/dino.png",
                 "key": "dino",
                 "type": "image"

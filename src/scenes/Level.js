@@ -6,9 +6,14 @@
 class Level extends Phaser.Scene {
 
 	constructor() {
-		super("Level");
+		super({
+			plugins: {
+			  scene: [{ key: "SpinePlugin", plugin: SpinePlugin, mapping: "spine" }],
+			},
+		});
 
 		/* START-USER-CTR-CODE */
+		
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
@@ -80,7 +85,6 @@ class Level extends Phaser.Scene {
 	bullets;
 
 	/* START-USER-CODE */
-
 	// Write more your code here
 
 	create() {
