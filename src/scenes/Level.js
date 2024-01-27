@@ -144,8 +144,7 @@ class Level extends Phaser.Scene {
         });
 
 		this.input.on('pointerdown', pointer => {
-			this.hero.gun.fire(pointer.worldX, pointer.worldY, 900);
-			console.log(this);
+			this.hero.gun.fire(pointer.worldX, pointer.worldY, 700);
 		});
 
 		this.input.on('pointermove', pointer =>
@@ -176,7 +175,7 @@ class Level extends Phaser.Scene {
 		});
 
 		this.physics.add.collider(this.players, this.colliders);
-		this.physics.add.overlap(this.bullets, this.colliders, (bullet, block) => {
+		this.physics.add.collider(this.bullets, this.colliders, (bullet, block) => {
 			bullet.onCollide();
 		});
 	}

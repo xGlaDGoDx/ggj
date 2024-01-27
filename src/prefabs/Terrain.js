@@ -122,7 +122,7 @@ class Terrain extends Phaser.GameObjects.Image {
 			}
 		}
 		
-		circle.radius = r + 5;
+		circle.radius = r + 10;
 			
 		area = this.tree.search({
 			minX: rect.minX-10,
