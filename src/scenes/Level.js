@@ -22,7 +22,7 @@ class Level extends Phaser.Scene {
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 867, 448);
+		const hero = new Hero(this, 731, 432);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -35,7 +35,7 @@ class Level extends Phaser.Scene {
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
 		// hero_1
-		const hero_1 = new Hero(this, 794, 449);
+		const hero_1 = new Hero(this, 791, 446);
 		this.add.existing(hero_1);
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -43,10 +43,8 @@ class Level extends Phaser.Scene {
 		hero_1.body.setSize(32, 32, false);
 
 		// lists
-		const colliders = [hero_1];
+		const colliders = [];
 		const players = [hero, hero_1];
-		const team1 = [hero];
-		const team2 = [];
 		const bullets = [];
 
 		this.terrain = terrain;
@@ -55,8 +53,6 @@ class Level extends Phaser.Scene {
 		this.hero_1 = hero_1;
 		this.colliders = colliders;
 		this.players = players;
-		this.team1 = team1;
-		this.team2 = team2;
 		this.bullets = bullets;
 
 		this.events.emit("scene-awake");
@@ -70,14 +66,10 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Hero} */
 	hero_1;
-	/** @type {Hero[]} */
+	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
 	players;
-	/** @type {Hero[]} */
-	team1;
-	/** @type {Array<any>} */
-	team2;
 	/** @type {Array<any>} */
 	bullets;
 
@@ -191,7 +183,7 @@ class Level extends Phaser.Scene {
 
 		this.hero = this.players[index];
 
-		//this.changeCameraFocus(this.hero);
+		this.changeCameraFocus(this.hero);
 	}
 
 	changeCameraFocus(target) {
