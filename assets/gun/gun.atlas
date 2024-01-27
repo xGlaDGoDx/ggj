@@ -1,0 +1,6 @@
+gun.png
+size:128,64
+filter:Linear,Linear
+pma:true
+gun
+bounds:2,2,76,32
