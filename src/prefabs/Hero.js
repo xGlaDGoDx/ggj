@@ -66,6 +66,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.hpBackground = this.scene.add.sprite(this.x, this.y, "hp_bg_green");
 		this.hpBackground.setOrigin(0.5, 0.5);
 		this.HpText = this.scene.add.text(this.x, this.y - 100, this.hp, {});
+		this.HpText.setStroke("0xffffff", 2);
 		this.HpText.setFont("Hitmo");
 		this.HpText.setStyle({ "fontSize": "25px", "fontStyle": "bold" });
 		this.HpText.setOrigin(0.5, 0.5);
