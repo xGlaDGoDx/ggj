@@ -1,0 +1,6 @@
+rocket.png
+size:32,32
+filter:Linear,Linear
+pma:true
+rocket
+bounds:2,2,27,23
