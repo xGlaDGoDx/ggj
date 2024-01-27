@@ -6,10 +6,10 @@
 class Terrain extends Phaser.GameObjects.Image {
 
 	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 445, y ?? 383, texture || "guapen", frame);
+		super(scene, x ?? 445, y ?? 383, texture || "test_platform", frame);
 
 		/* START-USER-CTR-CODE */
-		this.text = "guapen";
+		this.text = "test_platform";
 		this.sc = scene;
 		this.splitImage(4, 4);
 		this.tree = Phaser.Structs.RTree();
