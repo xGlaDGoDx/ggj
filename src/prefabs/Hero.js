@@ -7,13 +7,13 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 594, y ?? 306, texture || "__DEFAULT", frame);
-
 		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 61, 96), Phaser.Geom.Rectangle.Contains);
 		scene.physics.add.existing(this, false);
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
 		this.body.setCircle(9);
-
+		this.hp = 200;
+		this.addHpView();
 		/* START-USER-CTR-CODE */
 		this.gun = new Gun(scene, x, y, "gun");
 		this.heroAnim = scene.add.spine(this.x, this.y, 'capibara', 'capibara-atlas');
@@ -62,10 +62,18 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 	}
 
+	addHpView(){
+		this.HpText = this.scene.add.text(this.x, this.y - 100, this.hp, {});
+		this.HpText.setStyle({ "fontSize": "25px", "fontStyle": "bold" });
+	}
+
 	synchronize(){
 		this.gun.x = this.x;
 		this.gun.y = this.y;
-
+		if(this.HpText){
+			this.HpText.x = this.x - this.HpText.text.length * 25 / 2;
+			this.HpText.y = this.y - 100;
+		}
 		this.heroAnim.setScale(this.gun.flipY ? -1 : 1, 1);
 
 		this.heroAnim.x = this.x;
@@ -85,6 +93,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			this.onTakeDamage = false; 
 		}, 0);
 	}
+
 }
 
 /* END OF COMPILED CODE */

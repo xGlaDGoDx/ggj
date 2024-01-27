@@ -2,6 +2,7 @@
     "id": "01aefa93-6044-4159-8358-7e91310aa05f",
     "sceneType": "SCENE",
     "settings": {
+        "snapEnabled": true,
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
@@ -140,6 +141,20 @@
         {
             "id": "e9f29417-82b0-488f-b854-bd6f38aaa5b0",
             "label": "bullets"
+        },
+        {
+            "id": "12b8a607-0d57-46b6-b19c-818c7089c23f",
+            "label": "team1",
+            "objectIds": [
+                "f7d27fd6-8ecb-4136-bf32-795b209aa1c4"
+            ]
+        },
+        {
+            "id": "6438af64-0f48-44b8-aabe-ebd118a5fcfc",
+            "label": "team2",
+            "objectIds": [
+                "9e719f45-fde2-46ea-8a4a-7d93411f18eb"
+            ]
         }
     ]
 }
