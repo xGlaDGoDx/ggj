@@ -1,0 +1,17 @@
+cat_banana.png
+size:256,64
+filter:Linear,Linear
+pma:true
+banana_arm
+bounds:116,2,18,22
+banana_arm2
+bounds:95,2,19,22
+banana_body
+bounds:2,12,50,91
+rotate:90
+banana_had
+bounds:95,26,42,36
+banana_leg1
+bounds:139,39,18,23
+banana_leg2
+bounds:159,41,18,21

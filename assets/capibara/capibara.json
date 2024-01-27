@@ -1,0 +1,360 @@
+{
+"skeleton": {
+	"hash": "fL0y4zj+xdQ",
+	"spine": "4.1.24",
+	"x": -42.51,
+	"y": -35.78,
+	"width": 72.11,
+	"height": 85.17,
+	"images": "../images/",
+	"audio": "C:/Users/Computer/Desktop/capibara"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "root3", "parent": "root" },
+	{ "name": "capi_body", "parent": "root3", "length": 58.93, "rotation": 88.89, "x": -1.75, "y": -13.97 },
+	{ "name": "capi_had", "parent": "capi_body", "length": 39.85, "rotation": -74.55, "x": 26.28, "y": 9.09 },
+	{ "name": "root2", "parent": "root3" },
+	{ "name": "capi_arm1", "parent": "capi_body", "length": 19.41, "rotation": 157.44, "x": 19.5, "y": 12.25 },
+	{ "name": "capi_arm2", "parent": "root2", "length": 22.05, "rotation": -46.05, "x": 10.26, "y": 2.9 },
+	{ "name": "capi_tail", "parent": "capi_body", "length": 32.23, "rotation": 97.48, "x": 2.12, "y": 8.62 },
+	{ "name": "capi_leg1", "parent": "root2", "length": 23.9, "rotation": -92.4, "x": -13.48, "y": -10.54 },
+	{ "name": "capi_leg2", "parent": "root2", "length": 21.74, "rotation": -90.38, "x": 11.26, "y": -11.82 }
+],
+"slots": [
+	{ "name": "capi_arm2", "bone": "capi_arm2", "attachment": "capi_arm2" },
+	{ "name": "capi_leg2", "bone": "capi_leg2", "attachment": "capi_leg2" },
+	{ "name": "capi_tail", "bone": "capi_tail", "attachment": "capi_tail" },
+	{ "name": "capi_body", "bone": "capi_body", "attachment": "capi_body" },
+	{ "name": "capi_had", "bone": "capi_had", "attachment": "capi_had" },
+	{ "name": "capi_leg1", "bone": "capi_leg1", "attachment": "capi_leg1" },
+	{ "name": "capi_arm1", "bone": "capi_arm1", "attachment": "capi_arm1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"capi_arm1": {
+				"capi_arm1": { "x": 14.83, "y": 2.04, "rotation": 129.32, "width": 19, "height": 25 }
+			},
+			"capi_arm2": {
+				"capi_arm2": { "x": 12.21, "y": -1.12, "rotation": 46.05, "width": 20, "height": 23 }
+			},
+			"capi_body": {
+				"capi_body": { "x": 24.2, "y": 8.35, "rotation": -88.89, "width": 58, "height": 78 }
+			},
+			"capi_had": {
+				"capi_had": { "x": 18.48, "y": 1.92, "rotation": -14.34, "width": 45, "height": 36 }
+			},
+			"capi_leg1": {
+				"capi_leg1": { "x": 12.68, "y": 1.82, "rotation": 92.4, "width": 19, "height": 25 }
+			},
+			"capi_leg2": {
+				"capi_leg2": { "x": 12.37, "y": -1.15, "rotation": 90.38, "width": 19, "height": 22 }
+			},
+			"capi_tail": {
+				"capi_tail": { "x": 16.82, "y": 0.33, "rotation": 173.63, "width": 31, "height": 31 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"capi_body": {
+				"rotate": [
+					{ "value": 1.2 },
+					{ "time": 0.1667, "value": -4.8 },
+					{ "time": 0.4333, "value": 5.51 },
+					{ "time": 0.6667, "value": 1.2 }
+				],
+				"shear": [
+					{},
+					{ "time": 0.1667, "y": 2 },
+					{ "time": 0.4333, "y": -1.11 },
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_tail": {
+				"rotate": [
+					{
+						"curve": [ 0.083, 0, 0.25, -13.2 ]
+					},
+					{
+						"time": 0.3333,
+						"value": -13.2,
+						"curve": [ 0.417, -13.2, 0.583, 0 ]
+					},
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_leg2": {
+				"rotate": [
+					{
+						"curve": [ 0.042, 0, 0.125, -26.51 ]
+					},
+					{
+						"time": 0.1667,
+						"value": -26.51,
+						"curve": [ 0.208, -26.51, 0.292, 0 ]
+					},
+					{
+						"time": 0.3333,
+						"curve": [ 0.375, 0, 0.458, 22.14 ]
+					},
+					{
+						"time": 0.5,
+						"value": 22.14,
+						"curve": [ 0.542, 22.14, 0.625, 0 ]
+					},
+					{ "time": 0.6667 }
+				],
+				"scale": [
+					{
+						"curve": [ 0.042, 1, 0.125, 0.962, 0.042, 1, 0.125, 1.02 ]
+					},
+					{
+						"time": 0.1667,
+						"x": 0.962,
+						"y": 1.02,
+						"curve": [ 0.25, 0.962, 0.417, 1.048, 0.25, 1.02, 0.417, 0.949 ]
+					},
+					{
+						"time": 0.5,
+						"x": 1.048,
+						"y": 0.949,
+						"curve": [ 0.542, 1.048, 0.625, 1, 0.542, 0.949, 0.625, 1 ]
+					},
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_leg1": {
+				"rotate": [
+					{
+						"curve": [ 0.042, 0, 0.125, 19.16 ]
+					},
+					{
+						"time": 0.1667,
+						"value": 19.16,
+						"curve": [ 0.208, 19.16, 0.292, 0 ]
+					},
+					{
+						"time": 0.3333,
+						"curve": [ 0.375, 0, 0.458, -25.19 ]
+					},
+					{
+						"time": 0.5,
+						"value": -25.19,
+						"curve": [ 0.542, -25.19, 0.625, 0 ]
+					},
+					{ "time": 0.6667 }
+				],
+				"scale": [
+					{
+						"curve": [ 0.042, 1, 0.125, 1.111, 0.042, 1, 0.125, 0.956 ]
+					},
+					{
+						"time": 0.1667,
+						"x": 1.111,
+						"y": 0.956,
+						"curve": [ 0.25, 1.111, 0.417, 0.942, 0.25, 0.956, 0.417, 1.023 ]
+					},
+					{
+						"time": 0.5,
+						"x": 0.942,
+						"y": 1.023,
+						"curve": [ 0.542, 0.942, 0.625, 1, 0.542, 1.023, 0.625, 1 ]
+					},
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_had": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "value": 4.8 },
+					{ "time": 0.4333, "value": -8.56 },
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_arm2": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "value": 19.16 },
+					{ "time": 0.3 },
+					{ "time": 0.4667, "value": -44.69 },
+					{ "time": 0.6667 }
+				]
+			},
+			"capi_arm1": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "value": -16.91 },
+					{ "time": 0.3333 },
+					{ "time": 0.5, "value": 12.95 },
+					{ "time": 0.6667 }
+				],
+				"shear": [
+					{},
+					{ "time": 0.1667, "x": -8.8 },
+					{ "time": 0.3333 },
+					{ "time": 0.5, "x": 7.65, "y": 15.86 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"bones": {
+			"capi_body": {
+				"rotate": [
+					{ "value": 1.2 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.2667, "x": 0.96 },
+					{ "time": 0.5 }
+				]
+			},
+			"capi_had": {
+				"rotate": [
+					{
+						"curve": [ 0.067, 0, 0.2, -3.09 ]
+					},
+					{
+						"time": 0.2667,
+						"value": -3.09,
+						"curve": [ 0.325, -3.09, 0.442, 0 ]
+					},
+					{ "time": 0.5 }
+				]
+			},
+			"capi_tail": {
+				"rotate": [
+					{
+						"curve": [ 0.058, 0, 0.175, -7.2 ]
+					},
+					{
+						"time": 0.2333,
+						"value": -7.2,
+						"curve": [ 0.3, -7.2, 0.433, 0 ]
+					},
+					{ "time": 0.5 }
+				],
+				"scale": [
+					{
+						"curve": [ 0.058, 1, 0.175, 0.944, 0.058, 1, 0.175, 1 ]
+					},
+					{
+						"time": 0.2333,
+						"x": 0.944,
+						"curve": [ 0.3, 0.944, 0.433, 1, 0.3, 1, 0.433, 1 ]
+					},
+					{ "time": 0.5 }
+				]
+			}
+		}
+	},
+	"jump": {
+		"bones": {
+			"root": {
+				"translate": [
+					{ "time": 0.0667 },
+					{ "time": 0.1667, "y": 16.72 },
+					{ "time": 0.2667, "y": 21.24 },
+					{ "time": 0.4 }
+				]
+			},
+			"capi_body": {
+				"rotate": [
+					{ "value": 1.2 },
+					{ "time": 0.1333 },
+					{ "time": 0.5667, "value": 1.2 }
+				],
+				"translate": [
+					{
+						"curve": [ 0.033, 0, 0.1, -0.09, 0.033, 0, 0.1, -4.73 ]
+					},
+					{ "time": 0.1333, "x": -0.09, "y": -4.73 },
+					{ "time": 0.2667, "x": -0.01, "y": -0.7 },
+					{ "time": 0.4, "x": -0.09, "y": -4.86 },
+					{ "time": 0.5667 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.1333, "x": 0.963, "y": 1.037 },
+					{ "time": 0.2667, "x": 1.003, "y": 0.99 },
+					{ "time": 0.4, "x": 0.938, "y": 0.972 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_arm1": {
+				"rotate": [
+					{ "time": 0.0667 },
+					{ "time": 0.2667, "value": -49.11 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_had": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "value": 4.8 },
+					{ "time": 0.4, "value": -10 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_tail": {
+				"rotate": [
+					{
+						"curve": [ 0.067, 0, 0.2, -17.63 ]
+					},
+					{
+						"time": 0.2667,
+						"value": -17.63,
+						"curve": [ 0.342, -17.63, 0.492, 0 ]
+					},
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_arm2": {
+				"rotate": [
+					{ "time": 0.0667 },
+					{ "time": 0.2667, "value": 28.08 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_leg1": {
+				"translate": [
+					{},
+					{ "time": 0.0667, "x": -0.11, "y": -2.67 },
+					{ "time": 0.2667, "x": -0.13, "y": -3.16 },
+					{ "time": 0.4667, "x": -0.11, "y": -2.67 },
+					{ "time": 0.5667 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.0667, "x": 0.914, "y": 1.092 },
+					{ "time": 0.2667, "x": 1.083 },
+					{ "time": 0.4667, "x": 0.914, "y": 1.092 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_leg2": {
+				"translate": [
+					{},
+					{ "time": 0.0667, "x": -0.02, "y": -2.67 },
+					{ "time": 0.2667, "x": -0.02, "y": -3.17 },
+					{ "time": 0.4667, "x": -0.02, "y": -2.67 },
+					{ "time": 0.5667 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.0667, "x": 0.914, "y": 1.092 },
+					{ "time": 0.2667, "x": 1.083 },
+					{ "time": 0.4667, "x": 0.914, "y": 1.092 },
+					{ "time": 0.5667 }
+				]
+			}
+		}
+	}
+}
+}
