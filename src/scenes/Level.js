@@ -130,6 +130,10 @@ class Level extends Phaser.Scene {
         });
 	}
 
+	onExplosion(explosionArea) {
+		this.terrain.destroyArea(explosionArea);
+	}
+
 	setDebug() {
 		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
 	}
