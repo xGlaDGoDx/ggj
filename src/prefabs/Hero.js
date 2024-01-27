@@ -63,16 +63,22 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	addHpView(){
+		this.hpBackground = this.scene.add.sprite(this.x, this.y, "hp_bg_green");
+		this.hpBackground.setOrigin(0.5, 0.5);
 		this.HpText = this.scene.add.text(this.x, this.y - 100, this.hp, {});
+		this.HpText.setFont("Hitmo");
 		this.HpText.setStyle({ "fontSize": "25px", "fontStyle": "bold" });
+		this.HpText.setOrigin(0.5, 0.5);
 	}
 
 	synchronize(){
 		this.gun.x = this.x;
 		this.gun.y = this.y;
 		if(this.HpText){
-			this.HpText.x = this.x - this.HpText.text.length * 25 / 2;
+			this.HpText.x = this.x;
+			this.hpBackground.x = this.x;
 			this.HpText.y = this.y - 100;
+			this.hpBackground.y = this.HpText.y;
 		}
 		this.heroAnim.setScale(this.gun.flipY ? -1 : 1, 1);
 
