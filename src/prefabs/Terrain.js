@@ -11,9 +11,9 @@ class Terrain extends Phaser.GameObjects.Image {
 		/* START-USER-CTR-CODE */
 		this.text = "test_platform";
 		this.sc = scene;
-		this.splitImage(4, 4);
+		this.splitImage(10, 10);
 		this.tree = Phaser.Structs.RTree();
-		this.renderImage(x, y, 4);
+		this.renderImage(x, y, 10);
 		this.destroy();
 		/* END-USER-CTR-CODE */
 	}
@@ -78,10 +78,12 @@ class Terrain extends Phaser.GameObjects.Image {
 				continue;
 			}
 			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
+			//sprite.setVisible(false)
 			if(this.checkForAddCollision(i, splitSize)){
 				this.scene.physics.add.existing(sprite);
 				sprite.body.setAllowGravity(false);
 				sprite.body.pushable = false;
+				//sprite.body.setEnable(false);
 			}
 			let bounds = sprite.getBounds();
 			this.tree.insert({
@@ -100,16 +102,18 @@ class Terrain extends Phaser.GameObjects.Image {
 
 	destroyArea(rect){
 		let area = this.tree.search(rect);
-		console.log(area);
 		for(let i = 0; i < area.length; i++){
-			area[i].sprite.destroy();
+			area[i].sprite.setVisible(false);
+			if(area[i].sprite.body){
+				area[i].sprite.body.destroy();
+			}
 			this.tree.remove(area[i]);
 		}
 		let area2 = this.tree.search({
-			minX: rect.minX-4,
-			minY: rect.minY-4,
-			maxX:rect.maxX+4,
-			maxY:rect.maxY+4
+			minX: rect.minX-10,
+			minY: rect.minY-10,
+			maxX:rect.maxX+10,
+			maxY:rect.maxY+10
 		});
 
 		for(let i = 0; i < area2.length; i++){
@@ -122,6 +126,10 @@ class Terrain extends Phaser.GameObjects.Image {
 
 	all(){
 		return this.tree.all();
+	}
+
+	renderTerrain(){
+
 	}
 
 	/* END-USER-CODE */

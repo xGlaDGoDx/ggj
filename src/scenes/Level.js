@@ -216,6 +216,8 @@ class Level extends Phaser.Scene {
 		this.players.forEach((player) =>{
 			player.synchronize();
 		});
+		
+		console.log(this.camera.worldView);
 	}
 
 	/* END-USER-CODE */

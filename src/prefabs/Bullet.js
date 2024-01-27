@@ -12,7 +12,6 @@ class Bullet extends Phaser.Physics.Arcade.Sprite{
     }
 
     onCollide(){
-        console.log(this.x, this.y);
         this.sc.terrain.destroyArea({
             minX: this.x - 80,
             minY: this.y - 80,
