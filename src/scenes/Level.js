@@ -18,12 +18,12 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// terrain
-		const terrain = new Terrain(this, -3, 205, "guapen");
+		const terrain = new Terrain(this, 0, 275, "island1");
 		this.add.existing(terrain);
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 731, 432);
+		const hero = new Hero(this, 731, 500);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
@@ -35,14 +35,14 @@ class Level extends Phaser.Scene {
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
 		// hero_1
-		const hero_1 = new Hero(this, 791, 446);
+		const hero_1 = new Hero(this, 791, 500);
 		this.add.existing(hero_1);
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
 
 		// bg
-		const bg = this.add.image(630, 317, "bg");
+		const bg = this.add.image(728, 450, "bg");
 
 		// lists
 		const colliders = [];
@@ -97,7 +97,14 @@ class Level extends Phaser.Scene {
 		this.graphics = this.add.graphics()
 
 		let camera = this.camera = this.cameras.main;
+		this.physics.world.setBounds(0, 0, 1425, 800);
+		camera.setBounds(0, 0, 1425, 800);
+
+		console.log(this)
+
 		camera.setPostPipeline();
+
+		console.log(this);
 
 		this.setCollision();
 
@@ -128,7 +135,7 @@ class Level extends Phaser.Scene {
             const worldPoint = camera.getWorldPoint(pointer.x, pointer.y);
             const newZoom = camera.zoom - camera.zoom * 0.0015 * deltaY;
 
-            camera.zoomTo(Phaser.Math.Clamp(newZoom, 0.5, 1.5), 200);
+            camera.zoomTo(Phaser.Math.Clamp(newZoom, 1, 1.5), 200);
 
             // Update camera matrix, so `getWorldPoint` returns zoom-adjusted coordinates.
             camera.preRender();
@@ -227,6 +234,14 @@ class Level extends Phaser.Scene {
 		});
 	}
 
+	checkCameraInScene() {
+		let worldView = this.camera.worldView;
+		
+		if (worldView.left <= 10 || worldView.right >= 1270 || worldView.top <= 5 || worldView.bottom >= 715) {
+			this.camera.pan()
+		}
+	}
+
 	update() {
 		this.updateTimer();
 
@@ -253,6 +268,8 @@ class Level extends Phaser.Scene {
 				bullet.rotation = bullet.body.angle;
 			}
 		})
+
+		this.camera.worldView
 	}
 
 	/* END-USER-CODE */
