@@ -17,7 +17,7 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// terrain
-		const terrain = new Terrain(this, -3, 205, "test_platform");
+		const terrain = new Terrain(this, -3, 205, "guapen");
 		this.add.existing(terrain);
 		terrain.setOrigin(0, 0);
 
@@ -122,6 +122,7 @@ class Level extends Phaser.Scene {
 
 		this.input.on('pointerdown', pointer => {
 			this.hero.gun.fire(pointer.worldX, pointer.worldY, 900);
+			console.log(this);
 		});
 
 		this.input.on('pointermove', pointer =>
@@ -229,6 +230,12 @@ class Level extends Phaser.Scene {
 		this.players.forEach((player) =>{
 			player.synchronize();
 		});
+
+		this.bullets.forEach(bullet => {
+			if (bullet.body) {
+				bullet.rotation = bullet.body.angle;
+			}
+		})
 	}
 
 	/* END-USER-CODE */

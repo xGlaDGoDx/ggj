@@ -48,12 +48,13 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
 		angle.normalize();
 
+		console.log(angle)
 		let power = 500;
 		
 		this.onTakeDamage = true;
 		console.log('asd2')
 		setTimeout(() => {
-			this.setVelocity(angle.x * power, Phaser.Math.Clamp(angle.y, -0.3, -1) * power);
+			this.setVelocity(angle.x * power, Phaser.Math.Clamp(angle.y, -0.5, -1) * power);
 			this.onTakeDamage = false; 
 		}, 0);
 	}

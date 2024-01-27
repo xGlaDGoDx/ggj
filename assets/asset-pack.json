@@ -17,6 +17,16 @@
                 "key": "gun"
             },
             {
+                "url": "assets/rocket/rocket.json",
+                "type": "spineJson",
+                "key": "rocket"
+            },
+            {
+                "url": "assets/rocket/rocket.atlas",
+                "type": "spineAtlas",
+                "key": "rocket-atlas"
+            },
+            {
                 "url": "assets/test_platform.png",
                 "type": "image",
                 "key": "test_platform"

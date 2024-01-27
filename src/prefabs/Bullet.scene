@@ -1,0 +1,29 @@
+{
+    "id": "ae382c2d-b493-4bf4-8f9e-a1c1ef6afea1",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": ""
+    },
+    "displayList": [
+        {
+            "type": "SpineGameObject",
+            "id": "6f3cdc5c-ad1d-48c1-a256-18e9062f40d9",
+            "label": "rocket",
+            "dataKey": "rocket",
+            "atlasKey": "rocket-atlas",
+            "skinName": "default",
+            "bpType": 1,
+            "x": 504,
+            "y": 283
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

@@ -11,9 +11,13 @@ class Terrain extends Phaser.GameObjects.Image {
 		/* START-USER-CTR-CODE */
 		this.text = "test_platform";
 		this.sc = scene;
-		this.splitImage(10, 10);
+		this.splitImage(5, 5);
 		this.tree = Phaser.Structs.RTree();
-		this.renderImage(x, y, 10);
+
+		this.tex = this.scene.textures.get(this.text).getSourceImage();
+		this.count = this.scene.textures.get(this.text).getFrameNames().length;
+
+		this.renderImage(x, y, 5);
 		this.destroy();
 		/* END-USER-CTR-CODE */
 	}
@@ -36,49 +40,46 @@ class Terrain extends Phaser.GameObjects.Image {
 		return color;
 	}
 
-	checkForAddCollision(id, spritSize){
+	checkForAddCollision(id, spritSize) {
 		let air = false;
-		let notAir = 0;
-		for(let i = 0; i < spritSize; i++){
-			for(let j = 0; j < spritSize; j++){
-				let pixel = this.getPixel(i, j, id);
-				if(pixel.r === 0 && pixel.g === 0 && pixel.b === 0){
-					air = true;
-				}
-				if(pixel.r !== 0 && pixel.g !== 0 && pixel.b !== 0){
-					notAir++;
-				}
+		let notAir = false;
+		[[0, spritSize-1], [spritSize-1, 0], [spritSize-1, spritSize-1], [0, 0]].forEach(xy => {
+			let pixel = this.getPixel(xy[0], xy[1], id);
+			if(!(pixel.r === 0 && pixel.g === 0 && pixel.b === 0)){
+				notAir = true;
+			} else {
+				air = true;
 			}
-		}
+		})
 
 		return air && notAir;
 	}
 
-	chechAir(id, splitSize){
-		let air = 0;
-		for(let i = 0; i < splitSize; i++){
-			for(let j = 0; j < splitSize; j++){
-				let pixel = this.getPixel(i, j, id);
-				if(pixel.r === 0 && pixel.g === 0 && pixel.b === 0){
-					air++;
-				}
-			}
-		}
 
-		return air === splitSize * splitSize;
+	chechAir(id, splitSize) {
+		let air = true;
+		[[0, splitSize-1], [splitSize-1, 0], [splitSize-1, splitSize-1], [0, 0]].forEach(xy => {
+			let pixel = this.getPixel(xy[0], xy[1], id);
+			if(!(pixel.r === 0 && pixel.g === 0 && pixel.b === 0)){
+				air = false;
+			}
+		})
+
+		return air;
 	}
-	renderImage(x, y, splitSize){
-		let tex = this.scene.textures.get(this.text).getSourceImage();
+
+	renderImage(x, y, splitSize) {
+		let tex = this.tex;
 		let sizeX = tex.width;
 		let width = Math.floor(sizeX / splitSize);
-		let count = this.scene.textures.get(this.text).getFrameNames().length;
+		let count = this.count;
 		for(let i = 0; i < count; i++){
-			let pixel = this.getPixel(0, 0, i);
+			// let pixel = this.getPixel(0, 0, i);
 			if(this.chechAir(i, splitSize)){
 				continue;
 			}
-			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
 			//sprite.setVisible(false)
+			let sprite = this.scene.add.sprite(Math.floor(i % width) * splitSize + x, Math.floor(i / width) * splitSize + y, this.text, i);
 			if(this.checkForAddCollision(i, splitSize)){
 				this.scene.physics.add.existing(sprite);
 				sprite.body.setAllowGravity(false);
@@ -86,6 +87,7 @@ class Terrain extends Phaser.GameObjects.Image {
 				//sprite.body.setEnable(false);
 			}
 			let bounds = sprite.getBounds();
+
 			this.tree.insert({
 				left: bounds.left,
 				right: bounds.right,
@@ -102,25 +104,39 @@ class Terrain extends Phaser.GameObjects.Image {
 
 	destroyArea(rect){
 		let area = this.tree.search(rect);
+
+		let width = rect.maxX - rect.minX;
+		let height = rect.maxY - rect.minY;
+
+		let r = Math.max(width, height) / 2;
+
+		let circle = new Phaser.Geom.Circle(rect.x, rect.y, r);
+
 		for(let i = 0; i < area.length; i++){
-			area[i].sprite.setVisible(false);
-			if(area[i].sprite.body){
-				area[i].sprite.body.destroy();
+			if (circle.contains(area[i].sprite.x, area[i].sprite.y)) {
+				area[i].sprite.setVisible(false);
+				if(area[i].sprite.body) {
+					area[i].sprite.body.destroy();
+				}
+				this.tree.remove(area[i]);
 			}
-			this.tree.remove(area[i]);
 		}
-		let area2 = this.tree.search({
+		
+		circle.radius = r + 5;
+			
+		area = this.tree.search({
 			minX: rect.minX-10,
 			minY: rect.minY-10,
 			maxX:rect.maxX+10,
 			maxY:rect.maxY+10
 		});
 
-		for(let i = 0; i < area2.length; i++){
-
-			this.sc.physics.add.existing(area2[i].sprite);
-			area2[i].sprite.body.setAllowGravity(false);
-			area2[i].sprite.body.pushable = false;
+		for(let i = 0; i < area.length; i++){
+			if (circle.contains(area[i].sprite.x, area[i].sprite.y)) {
+				this.sc.physics.add.existing(area[i].sprite);
+				area[i].sprite.body.setAllowGravity(false);
+				area[i].sprite.body.pushable = false;
+			}
 		}
 	}
 

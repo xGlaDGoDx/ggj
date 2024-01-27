@@ -22,7 +22,7 @@
             "label": "terrain",
             "scope": "PUBLIC",
             "texture": {
-                "key": "test_platform"
+                "key": "guapen"
             },
             "x": -3,
             "y": 205,
