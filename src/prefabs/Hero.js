@@ -22,12 +22,10 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	/* START-USER-CODE */
 
 	left() {
-		this.gun.setFlipY(true);
 		this.setVelocityX(-160);
 	}
 
 	right() {
-		this.gun.setFlipY(false);
 		this.setVelocityX(160);
 	}
 
@@ -51,8 +49,13 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		angle.normalize();
 
 		let power = 500;
-
-		this.setVelocity(angle.x * power, Phaser.Math.Clamp(angle.y, -0.3, -1) * power);
+		
+		this.onTakeDamage = true;
+		console.log('asd2')
+		setTimeout(() => {
+			this.setVelocity(angle.x * power, Phaser.Math.Clamp(angle.y, -0.3, -1) * power);
+			this.onTakeDamage = false; 
+		}, 0);
 	}
 }
 

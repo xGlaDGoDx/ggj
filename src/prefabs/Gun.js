@@ -18,8 +18,15 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	/* START-USER-CODE */
 
 	rotate(x, y){
-		this.angile = Phaser.Math.Angle.Between(x, y, this.x, this.y) - Math.PI;
-		this.setRotation(this.angile);
+		let angile = Phaser.Math.Angle.Between(x, y, this.x, this.y) - Math.PI;
+
+		if (Math.abs(angile) > Math.PI / 2 && Math.abs(angile) < 3 * Math.PI / 2) {
+			this.setFlipY(true);
+		} else {
+			this.setFlipY(false);
+		}
+
+		this.setRotation(angile);
 	}
 
 	fire(x, y, power){

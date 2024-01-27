@@ -194,6 +194,7 @@ class Level extends Phaser.Scene {
 		}
 
 		this.hero = this.players[index];
+		this.hero.isTargetHero = true;
 
 		this.changeCameraFocus(this.hero);
 	}
@@ -216,8 +217,8 @@ class Level extends Phaser.Scene {
 		}
 		else if (this.cursors.right.isDown && !this.hero.body.touching.left) {
 			this.hero.right();
-		}
-		else {
+		} 
+		else if (!this.hero.onTakeDamage) {
 			this.hero.stop();
 		}
 
