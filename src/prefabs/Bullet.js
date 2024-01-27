@@ -15,7 +15,7 @@ class Bullet extends spine.SpineGameObject {
         scene.bullets.push(this);
         this.index = scene.bullets.length - 1;
 
-        setTimeout(this.delete.bind(this), 7000);
+       setTimeout(this.delete.bind(this), 7000);
     }
 
     onCollide(){
