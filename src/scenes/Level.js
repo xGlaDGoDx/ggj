@@ -218,7 +218,7 @@ class Level extends Phaser.Scene {
 			this.hero.right();
 		}
 		else {
-			// this.hero.stop();
+			this.hero.stop();
 		}
 
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {

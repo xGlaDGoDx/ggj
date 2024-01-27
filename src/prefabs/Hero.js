@@ -22,6 +22,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	/* START-USER-CODE */
 
 	left() {
+		console.log(this.body.speed)
 		this.setVelocityX(-160);
 	}
 
@@ -34,7 +35,9 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	stop() {
-		this.setVelocityX(0);
+		if (this.body.touching.down) 
+			this.setVelocityX(0);
+		}
 	}
 
 	synchronize(){
