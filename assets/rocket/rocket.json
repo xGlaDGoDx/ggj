@@ -1,0 +1,71 @@
+{
+"skeleton": {
+	"hash": "XftnqzCawbE",
+	"spine": "4.1.24",
+	"x": -13.5,
+	"y": -11.5,
+	"width": 27,
+	"height": 23,
+	"images": "./images/",
+	"audio": "C:/Users/Computer/Downloads/Новая папка (5)"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "rocket", "parent": "root", "length": 26.53, "x": -13.23, "y": 0.45 }
+],
+"slots": [
+	{ "name": "rocket", "bone": "rocket", "attachment": "rocket" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"rocket": {
+				"rocket": { "x": 13.23, "y": -0.45, "width": 27, "height": 23 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"root": {
+				"translate": [
+					{}
+				]
+			}
+		}
+	},
+	"start": {
+		"slots": {
+			"rocket": {
+				"rgba": [
+					{
+						"color": "ffffff00",
+						"curve": [ 0.083, 1, 0.25, 1, 0.083, 1, 0.25, 1, 0.083, 1, 0.25, 1, 0.083, 0, 0.25, 1 ]
+					},
+					{ "time": 0.3333, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"rocket": {
+				"scale": [
+					{
+						"x": 0.8,
+						"y": 1.1,
+						"curve": [ 0.083, 0.8, 0.25, 1.1, 0.083, 1.1, 0.25, 0.9 ]
+					},
+					{
+						"time": 0.3333,
+						"x": 1.1,
+						"y": 0.9,
+						"curve": [ 0.417, 1.1, 0.583, 1, 0.417, 0.9, 0.583, 1 ]
+					},
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	}
+}
+}
