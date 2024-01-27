@@ -119,7 +119,7 @@ class Level extends Phaser.Scene {
             const worldPoint = camera.getWorldPoint(pointer.x, pointer.y);
             const newZoom = camera.zoom - camera.zoom * 0.0015 * deltaY;
 
-            camera.zoomTo(Phaser.Math.Clamp(newZoom, 0.25, 2), 200);
+            camera.zoomTo(Phaser.Math.Clamp(newZoom, 0.5, 1.5), 200);
 
             // Update camera matrix, so `getWorldPoint` returns zoom-adjusted coordinates.
             camera.preRender();
