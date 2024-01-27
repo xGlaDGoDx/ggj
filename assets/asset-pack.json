@@ -12,6 +12,11 @@
                 "type": "image"
             },
             {
+                "url": "assets/gun/images/gun.png",
+                "type": "image",
+                "key": "gun"
+            },
+            {
                 "url": "assets/test_platform.png",
                 "type": "image",
                 "key": "test_platform"

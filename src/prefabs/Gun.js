@@ -9,7 +9,7 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 		super(scene, x ?? 559, y ?? 369, texture || "dino", frame);
 
 		scene.add.existing(this, false);
-
+		this.setOrigin(0.1, 0.5);
 		/* START-USER-CTR-CODE */
 		this.sc = scene;
 		/* END-USER-CTR-CODE */
@@ -18,7 +18,7 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	/* START-USER-CODE */
 
 	rotate(x, y){
-		this.angile = Phaser.Math.Angle.Between(x, y, this.x, this.y) - Math.PI / 2;
+		this.angile = Phaser.Math.Angle.Between(x, y, this.x, this.y) - Math.PI;
 		this.setRotation(this.angile);
 	}
 
