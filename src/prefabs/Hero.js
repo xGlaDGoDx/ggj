@@ -41,6 +41,15 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.gun.x = this.x;
 		this.gun.y = this.y;
 	}
+
+	onDamageBomb(centerX, centerY) {
+		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
+		angle.normalize();
+
+		let power = 500;
+
+		this.setVelocity(angle.x * power, Phaser.Math.Clamp(angle.y, -0.3, -1) * power);
+	}
 }
 
 /* END OF COMPILED CODE */

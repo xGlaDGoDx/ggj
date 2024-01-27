@@ -14,6 +14,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite{
     onCollide(){
         console.log(this.x, this.y);
         let explosionArea = {
+            x: this.x,
+            y: this.y,
             minX: this.x - 80,
             minY: this.y - 80,
             maxX: this.x + 80,

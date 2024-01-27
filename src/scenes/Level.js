@@ -80,6 +80,8 @@ class Level extends Phaser.Scene {
 	create() {
 		this.editorCreate();
 
+		this.graphics = this.add.graphics()
+
 		let camera = this.camera = this.cameras.main;
 		camera.setPostPipeline();
 
@@ -87,8 +89,6 @@ class Level extends Phaser.Scene {
 
 		this.setCountTimer();
 		this.updateTimer();
-
-
 
 		this.targetHeroIndex = 0;
 		this.setHeroTarget(this.targetHeroIndex);
@@ -132,6 +132,14 @@ class Level extends Phaser.Scene {
 
 	onExplosion(explosionArea) {
 		this.terrain.destroyArea(explosionArea);
+
+		this.players.forEach(player => {
+			let rect = new Phaser.Geom.Rectangle(explosionArea.x - 100, explosionArea.y - 100, 200, 200);
+
+			if (rect.contains(player.x, player.y)) {
+				player.onDamageBomb(rect.centerX, rect.centerY);
+			}
+		})
 	}
 
 	setDebug() {
@@ -210,7 +218,7 @@ class Level extends Phaser.Scene {
 			this.hero.right();
 		}
 		else {
-			this.hero.stop();
+			// this.hero.stop();
 		}
 
 		if (this.cursors.up.isDown && this.hero.body.touching.down) {
@@ -220,8 +228,6 @@ class Level extends Phaser.Scene {
 		this.players.forEach((player) =>{
 			player.synchronize();
 		});
-		
-		console.log(this.camera.worldView);
 	}
 
 	/* END-USER-CODE */
