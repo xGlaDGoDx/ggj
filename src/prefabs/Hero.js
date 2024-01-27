@@ -15,18 +15,19 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.body.setSize(32, 32, false);
 
 		/* START-USER-CTR-CODE */
-		this.gun = new Gun(scene, x, y, "dino");
+		this.gun = new Gun(scene, x, y, "gun");
 		/* END-USER-CTR-CODE */
 	}
 
 	/* START-USER-CODE */
 
 	left() {
-		console.log(this.body.speed)
+		this.gun.setFlipY(true);
 		this.setVelocityX(-160);
 	}
 
 	right() {
+		this.gun.setFlipY(false);
 		this.setVelocityX(160);
 	}
 
