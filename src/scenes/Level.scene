@@ -103,6 +103,17 @@
             "body.height": 32,
             "body.offset.x": 0,
             "body.offset.y": 0
+        },
+        {
+            "type": "Image",
+            "id": "7444d60b-6318-4a6c-9f0d-ce926e260ed0",
+            "label": "bg",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg"
+            },
+            "x": 630,
+            "y": 317
         }
     ],
     "plainObjects": [],

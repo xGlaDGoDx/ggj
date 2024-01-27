@@ -42,6 +42,9 @@ class Level extends Phaser.Scene {
 		hero_1.body.setOffset(0, 0);
 		hero_1.body.setSize(32, 32, false);
 
+		// bg
+		const bg = this.add.image(630, 317, "bg");
+
 		// lists
 		const colliders = [];
 		const players = [hero, hero_1];
@@ -51,6 +54,7 @@ class Level extends Phaser.Scene {
 		this.hero = hero;
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
+		this.bg = bg;
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
@@ -66,6 +70,8 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Hero} */
 	hero_1;
+	/** @type {Phaser.GameObjects.Image} */
+	bg;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -79,6 +85,8 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
+
+		this.createBg();
 
 		this.graphics = this.add.graphics()
 
@@ -99,6 +107,10 @@ class Level extends Phaser.Scene {
 		this.addMouseControl();
 
 		this.setDebug();
+	}
+
+	createBg() {
+		this.bg.setDepth(-1);
 	}
 
 	addMouseControl() {

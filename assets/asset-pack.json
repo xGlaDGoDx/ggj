@@ -17,6 +17,11 @@
                 "key": "gun"
             },
             {
+                "url": "assets/island.png",
+                "type": "image",
+                "key": "island"
+            },
+            {
                 "url": "assets/rocket/rocket.json",
                 "type": "spineJson",
                 "key": "rocket"

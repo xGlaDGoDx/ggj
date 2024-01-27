@@ -9,15 +9,15 @@ class Terrain extends Phaser.GameObjects.Image {
 		super(scene, x ?? 445, y ?? 383, texture || "test_platform", frame);
 
 		/* START-USER-CTR-CODE */
-		this.text = "test_platform";
+		this.text = "island";
 		this.sc = scene;
-		this.splitImage(5, 5);
+		this.splitImage(6, 6);
 		this.tree = Phaser.Structs.RTree();
 
 		this.tex = this.scene.textures.get(this.text).getSourceImage();
 		this.count = this.scene.textures.get(this.text).getFrameNames().length;
 
-		this.renderImage(x, y, 5);
+		this.renderImage(x, y, 6);
 		this.destroy();
 		/* END-USER-CTR-CODE */
 	}

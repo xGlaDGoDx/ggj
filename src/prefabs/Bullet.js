@@ -6,7 +6,7 @@ class Bullet extends spine.SpineGameObject {
         super(scene, plugin, x + angile.x * 30, y + angile.y * 30, "rocket", "rocket-atlas", boundsProvider ?? new spine.SkinsAndAnimationBoundsProvider(null, ["default"]));
 
         this.skeleton.setSkinByName("default");
-        this.animationState.setAnimation(0, "start", false);
+        // this.animationState.setAnimation(0, "start", false);
         this.sc = scene;
         scene.physics.add.existing(this, false);
 
@@ -22,10 +22,10 @@ class Bullet extends spine.SpineGameObject {
         let explosionArea = {
             x: this.x,
             y: this.y,
-            minX: this.x - 100,
-            minY: this.y - 100,
-            maxX: this.x + 100,
-            maxY: this.y + 100
+            minX: this.x - 70,
+            minY: this.y - 70,
+            maxX: this.x + 70,
+            maxY: this.y + 70
         }
 
         this.sc.onExplosion(explosionArea);
