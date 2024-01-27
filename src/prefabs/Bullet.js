@@ -1,9 +1,9 @@
 class Bullet extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, velX, velY, power, texture, frame){
-        let angile = new Phaser.Math.Vector2(velX - this.x, velY - this.y);
+        let angile = new Phaser.Math.Vector2(velX - x, velY - y);
         angile.normalize();
 
-        super(scene, x, y, texture, frame);
+        super(scene, x + angile.x * 30, y + angile.y * 30, texture, frame);
         this.sc = scene;
         scene.physics.add.existing(this, false);
        
