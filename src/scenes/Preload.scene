@@ -52,6 +52,16 @@
             "fontFamily": "arial",
             "fontSize": "20px",
             "color": "#e0e0e0"
+        },
+        {
+            "type": "Image",
+            "id": "261efa8a-17ec-4343-8fc4-da27f3ff0d5b",
+            "label": "bar_bg",
+            "texture": {
+                "key": "bar_bg"
+            },
+            "x": 707,
+            "y": 475
         }
     ],
     "plainObjects": [],
