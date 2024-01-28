@@ -56,9 +56,7 @@
                 "hitArea.points",
                 "hitArea.alphaTolerance",
                 "body.offset.x",
-                "body.offset.y",
-                "body.width",
-                "body.height"
+                "body.offset.y"
             ],
             "label": "hero",
             "scope": "PUBLIC",
@@ -68,8 +66,6 @@
             "hitArea.radius": 89.1237011846265,
             "x": 190,
             "y": 257,
-            "body.width": 32,
-            "body.height": 32,
             "body.offset.x": 0,
             "body.offset.y": 0
         },
@@ -103,9 +99,7 @@
                 "hitArea.points",
                 "hitArea.alphaTolerance",
                 "body.offset.x",
-                "body.offset.y",
-                "body.width",
-                "body.height"
+                "body.offset.y"
             ],
             "label": "hero_1",
             "scope": "PUBLIC",
@@ -115,8 +109,6 @@
             "hitArea.radius": 89.1237011846265,
             "x": 1205,
             "y": 152,
-            "body.width": 32,
-            "body.height": 32,
             "body.offset.x": 0,
             "body.offset.y": 0
         },
