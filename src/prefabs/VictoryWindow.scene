@@ -8,14 +8,35 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "6dbe6075-284d-4609-9f9a-8c5df6720426",
-            "label": "victory_window",
-            "texture": {
-                "key": "victory_window"
-            },
+            "type": "Container",
+            "id": "40fd63e9-9616-43ee-806b-e298e6afeecc",
+            "label": "container_1",
             "x": 375,
-            "y": 287
+            "y": 128,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "6dbe6075-284d-4609-9f9a-8c5df6720426",
+                    "label": "victory_window",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "victory_window"
+                    },
+                    "y": 159
+                },
+                {
+                    "prefabId": "ee60a12b-9fb7-4822-beb6-03271d1ad152",
+                    "id": "d9cf0ff9-f02f-488e-8d84-f47c83ca8e7e",
+                    "unlock": [
+                        "x",
+                        "y"
+                    ],
+                    "label": "button",
+                    "scope": "PUBLIC",
+                    "x": 188,
+                    "y": -6
+                }
+            ]
         }
     ],
     "plainObjects": [],

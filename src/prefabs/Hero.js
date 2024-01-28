@@ -121,6 +121,12 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		if(this.hp <= 0){
 			this.clear();
 
+			if(this.type === "cap"){
+				this.scene.showVictoryWindow("cap");
+			}else{
+				this.scene.showVictoryWindow("cat");
+			}
+
 			let grob = this.scene.add.image(this.x, this.y, `grob_${this.type}`)
 			this.scene.physics.add.existing(grob);
 

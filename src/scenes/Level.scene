@@ -132,16 +132,16 @@
             "y": 420
         },
         {
-            "prefabId": "ee60a12b-9fb7-4822-beb6-03271d1ad152",
-            "id": "a73f1be5-3631-4304-9222-55cf267c97ed",
+            "prefabId": "b8f75771-5ea8-4f8b-9235-49e825fa2284",
+            "id": "d57fbfd0-df93-4102-8d05-bd3046923f6e",
             "unlock": [
                 "x",
                 "y"
             ],
-            "label": "button",
+            "label": "victoryWindow",
             "scope": "PUBLIC",
-            "x": 222,
-            "y": 502
+            "x": 592,
+            "y": 288
         }
     ],
     "plainObjects": [],

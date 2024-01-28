@@ -3,15 +3,31 @@
 
 /* START OF COMPILED CODE */
 
-class VictoryWindow extends Phaser.GameObjects.Image {
+class VictoryWindow extends Phaser.GameObjects.Container {
 
-	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 375, y ?? 287, texture || "victory_window", frame);
+	constructor(scene, x, y) {
+		super(scene, x ?? 375, y ?? 128);
+
+		// victory_window
+		const victory_window = scene.add.image(0, 159, "victory_window");
+		this.add(victory_window);
+
+		// button
+		const button = new Button(scene, 188, -6);
+		this.add(button);
+
+		this.victory_window = victory_window;
+		this.button = button;
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
+
+	/** @type {Phaser.GameObjects.Image} */
+	victory_window;
+	/** @type {Button} */
+	button;
 
 	/* START-USER-CODE */
 

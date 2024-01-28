@@ -199,6 +199,16 @@
                 "url": "assets/ui/victory_window.png",
                 "type": "image",
                 "key": "victory_window"
+            },
+            {
+                "url": "assets/ui/victory_window_capy.png",
+                "type": "image",
+                "key": "victory_window_capy"
+            },
+            {
+                "url": "assets/ui/victory_window_cat.png",
+                "type": "image",
+                "key": "victory_window_cat"
             }
         ]
     },

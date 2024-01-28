@@ -50,9 +50,9 @@ class Level extends Phaser.Scene {
 		// timer_bg
 		const timer_bg = this.add.image(610, 420, "timer_bg");
 
-		// button
-		const button = new Button(this, 222, 502);
-		this.add.existing(button);
+		// victoryWindow
+		const victoryWindow = new VictoryWindow(this, 592, 288);
+		this.add.existing(victoryWindow);
 
 		// lists
 		const colliders = [];
@@ -67,7 +67,7 @@ class Level extends Phaser.Scene {
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
 		this.timer_bg = timer_bg;
-		this.button = button;
+		this.victoryWindow = victoryWindow;
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
@@ -89,8 +89,8 @@ class Level extends Phaser.Scene {
 	hero_1;
 	/** @type {Phaser.GameObjects.Image} */
 	timer_bg;
-	/** @type {Button} */
-	button;
+	/** @type {VictoryWindow} */
+	victoryWindow;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -110,7 +110,7 @@ class Level extends Phaser.Scene {
 
 		this.createBg();
 		this.teamsInit();
-
+		this.victoryWindow.setVisible(false);
 		this.graphics = this.add.graphics()
 
 		let camera = this.camera = this.cameras.main;
@@ -231,10 +231,25 @@ class Level extends Phaser.Scene {
 		this.timerText.setText(Math.ceil(this.countTimer.getRemainingSeconds()));
 	}
 
+	showVictoryWindow(type){
+		if(type === "cap"){
+			this.victoryWindow.victory_window.setTexture("victory_window_cat");
+		}else{
+			this.victoryWindow.victory_window.setTexture("victory_window_capy");
+		}
+		let worldView = this.camera.worldView;
+		this.victoryWindow.setPosition(worldView.x + 1280 / 2, worldView.y + 720 / 2);
+		this.victoryWindow.setVisible(true);
+	}
 	updateTimerPosition() {
 		let worldView = this.camera.worldView;
 		this.timer_bg.setPosition(worldView.x + 100, worldView.y + 580);
 		this.timerText.setPosition(worldView.x + 100, worldView.y + 580);
+	}
+
+	updateVictoryWindowPosition(){
+		let worldView = this.camera.worldView;
+		this.victoryWindow.setPosition(worldView.x + 1280 / 2, worldView.y + 720 / 4);
 	}
 
 	changePlayersMove() {
@@ -280,6 +295,7 @@ class Level extends Phaser.Scene {
 
 	update() {
 		this.updateTimer();
+		this.updateVictoryWindowPosition();
 
 		if (this.cursors.left.isDown && !this.hero.body.touching.right) {
 			this.hero.left();
