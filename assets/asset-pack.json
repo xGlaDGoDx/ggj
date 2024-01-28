@@ -32,6 +32,16 @@
                 "type": "image"
             },
             {
+                "url": "assets/explosion/explosion.json",
+                "type": "spineJson",
+                "key": "explosion"
+            },
+            {
+                "url": "assets/explosion/explosion.atlas",
+                "type": "spineAtlas",
+                "key": "explosion-atlas"
+            },
+            {
                 "url": "assets/gun/images/gun.png",
                 "type": "image",
                 "key": "gun"

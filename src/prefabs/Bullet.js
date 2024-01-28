@@ -19,6 +19,7 @@ class Bullet extends spine.SpineGameObject {
     }
 
     onCollide(){
+        new Explosion(this.scene, this.x, this.y);
         let explosionArea = {
             x: this.x,
             y: this.y,
