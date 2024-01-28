@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "Tbr/Ffov8vA",
+	"hash": "Rlf8k1dpvcM",
 	"spine": "4.1.24",
 	"x": -42.51,
 	"y": -35.78,
@@ -28,7 +28,7 @@
 	{ "name": "capi_body", "bone": "capi_body", "attachment": "capi_body" },
 	{ "name": "capi_had", "bone": "capi_had", "attachment": "capi_had" },
 	{ "name": "capi_leg1", "bone": "capi_leg1", "attachment": "capi_leg1" },
-	{ "name": "capi_arm1", "bone": "capi_arm1" }
+	{ "name": "capi_arm1", "bone": "capi_arm1", "attachment": "capi_arm1" }
 ],
 "skins": [
 	{
@@ -59,7 +59,7 @@
 	}
 ],
 "animations": {
-	"move": {
+	"animation": {
 		"bones": {
 			"capi_body": {
 				"rotate": [
@@ -280,6 +280,13 @@
 					{},
 					{ "time": 0.2667, "x": 0.963, "y": 1.037 },
 					{ "time": 0.8, "x": 0.938, "y": 0.972 },
+					{ "time": 1.1667 }
+				]
+			},
+			"capi_arm1": {
+				"rotate": [
+					{},
+					{ "time": 0.6333, "value": -24.47 },
 					{ "time": 1.1667 }
 				]
 			},
