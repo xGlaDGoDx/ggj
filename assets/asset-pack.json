@@ -42,6 +42,16 @@
                 "key": "explosion-atlas"
             },
             {
+                "url": "assets/grob_cap.png",
+                "type": "image",
+                "key": "grob_cap"
+            },
+            {
+                "url": "assets/grob_cat.png",
+                "type": "image",
+                "key": "grob_cat"
+            },
+            {
                 "url": "assets/gun/images/gun.png",
                 "type": "image",
                 "key": "gun"

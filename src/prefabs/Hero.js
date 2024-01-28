@@ -52,6 +52,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.heroAnim.animationState.setAnimation(0, "idle", true);
 		this.currentAnim = "idle";
 
+		this.type = spine === "cat_banana" ? "cat" : "cap";
 		if (spine === "cat_banana") { // rotate hero on enemy side
 			this.gun.rotate(this.x - 1, this.y);
 		}
@@ -96,6 +97,14 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.gun.y = this.heroAnim.y;
 	}
 
+	clear() {
+		this.left = this.right = this.stop = this.jump = () => {};
+		this.heroAnim.setVisible(false);
+		this.gun.setVisible(false);
+		this.HpText.setVisible(false);
+		this.hpBackground.setVisible(false);
+	}
+
 	onDamageBomb(centerX, centerY) {
 		this.hp -= 50;
 		if(this.HpText){
@@ -103,10 +112,18 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 
 		if(this.hp <= 0){
-			this.heroAnim.setVisible(false);
-			this.gun.setVisible(false);
-			this.HpText.setVisible(false);
-			this.hpBackground.setVisible(false);
+			this.clear();
+
+			let grob = this.scene.add.image(this.x, this.y, `grob_${this.type}`)
+			this.scene.physics.add.existing(grob);
+
+			grob.body.collideWorldBounds = true;
+			grob.body.onWorldBounds = true;
+
+			this.scene.physics.add.collider(grob, this.scene.colliders);
+
+			this.scene.
+
 			return;
 		}
 		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
