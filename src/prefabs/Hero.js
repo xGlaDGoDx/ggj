@@ -103,7 +103,10 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 
 		if(this.hp <= 0){
-			this.setVisible(false);
+			this.heroAnim.setVisible(false);
+			this.gun.setVisible(false);
+			this.HpText.setVisible(false);
+			this.hpBackground.setVisible(false);
 			return;
 		}
 		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
