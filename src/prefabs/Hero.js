@@ -97,6 +97,15 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	onDamageBomb(centerX, centerY) {
+		this.hp -= 50;
+		if(this.HpText){
+			this.HpText.text = this.hp;
+		}
+
+		if(this.hp <= 0){
+			this.setVisible(false);
+			return;
+		}
 		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
 		angle.normalize();
 
