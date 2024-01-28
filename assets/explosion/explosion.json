@@ -1,0 +1,69 @@
+{
+"skeleton": {
+	"hash": "EMzA+vo41bc",
+	"spine": "4.1.24",
+	"x": -46.2,
+	"y": -44.55,
+	"width": 92.4,
+	"height": 89.1,
+	"images": "./images/",
+	"audio": "C:/Users/Computer/Downloads/Новая папка (5)"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "scaleX": 1.1, "scaleY": 1.1 }
+],
+"slots": [
+	{ "name": "explosion1", "bone": "bone", "attachment": "explosion1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"explosion1": {
+				"explosion1": { "scaleX": 1.5, "scaleY": 1.5, "width": 56, "height": 54 },
+				"explosion2": { "width": 114, "height": 99 },
+				"explosion3": { "width": 115, "height": 103 },
+				"explosion4": { "width": 124, "height": 107 },
+				"explosion5": { "width": 100, "height": 102 },
+				"explosion6": { "width": 95, "height": 89 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"explosion1": {
+				"rgba": [
+					{
+						"time": 0.2,
+						"color": "ffffffff",
+						"curve": [ 0.25, 1, 0.35, 1, 0.25, 1, 0.35, 1, 0.25, 1, 0.35, 1, 0.25, 1, 0.35, 0 ]
+					},
+					{ "time": 0.4, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.1333, "name": "explosion2" },
+					{ "time": 0.1667, "name": "explosion3" },
+					{ "time": 0.2, "name": "explosion4" },
+					{ "time": 0.2333, "name": "explosion5" },
+					{ "time": 0.2667, "name": "explosion6" }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"scale": [
+					{
+						"x": 0,
+						"y": 0,
+						"curve": [ 0.1, 0, 0.3, 1, 0.1, 0, 0.3, 1 ]
+					},
+					{ "time": 0.4 }
+				]
+			}
+		}
+	}
+}
+}
