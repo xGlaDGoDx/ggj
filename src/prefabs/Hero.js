@@ -14,10 +14,11 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
 		this.body.setSize(32, 60, false);
-		this.body.world.on('worldbounds', (body) => {
-			if(body.gameObject !== this){
+		this.body.world.on('worldbounds', (body, blockedUp, blockedDown, blockedLeft, blockedRight) => {
+			if(body.gameObject !== this || blockedLeft || blockedRight){
 				return;
 			}
+			console.log(body, blockedUp, blockedDown, blockedLeft, blockedRight);
 			this.body.destroy();
 			this.kill();
 			this.grob.body.destroy();
