@@ -234,7 +234,7 @@
             },
             {
                 "url": [
-                    "assets/Sounds/sto-lichnyj-ona-nas-kapibara-mp3.mp3"
+                    "assets/Sounds/sto-lichnyj-ona-nas-kapibara-mp3_DRRbQ56v.mp3"
                 ],
                 "type": "audio",
                 "key": "win-cap"
@@ -263,6 +263,13 @@
                 "url": "assets/ui/victory_window_cat.png",
                 "type": "image",
                 "key": "victory_window_cat"
+            },
+            {
+                "url": [
+                    "assets/Sounds/sto-lichnyj-ona-nas-kapibara-mp3.mp3"
+                ],
+                "type": "audio",
+                "key": "win-cap"
             },
             {
                 "url": [
