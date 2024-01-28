@@ -34,6 +34,8 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 
 	fire(x, y, power){
 		if(this.ammo > 0){
+			let expSound = this.scene.sound.add('выстрел');
+       		expSound.play();
 			let bullet = new Bullet(this.sc, this.sc.spine, this.x, this.y, x, y, power);
 			this.sc.add.existing(bullet);
 			this.ammo--;

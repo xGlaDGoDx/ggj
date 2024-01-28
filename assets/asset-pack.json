@@ -2,6 +2,83 @@
     "section1": {
         "files": [
             {
+                "url": [
+                    "assets/Sounds/взрыв.mp3"
+                ],
+                "type": "audio",
+                "key": "взрыв"
+            },
+            {
+                "url": [
+                    "assets/Sounds/выстрел.mp3"
+                ],
+                "type": "audio",
+                "key": "выстрел"
+            },
+            {
+                "url": [
+                    "assets/Sounds/убийство-1.mp3"
+                ],
+                "type": "audio",
+                "key": "убийство-1"
+            },
+            {
+                "url": [
+                    "assets/Sounds/убийство-2.mp3"
+                ],
+                "type": "audio",
+                "key": "убийство-2"
+            },
+            {
+                "url": [
+                    "assets/Sounds/убийство-3.mp3"
+                ],
+                "type": "audio",
+                "key": "убийство-3"
+            },
+            {
+                "url": [
+                    "assets/Sounds/убийство-4.mp3"
+                ],
+                "type": "audio",
+                "key": "убийство-4"
+            },
+            {
+                "url": [
+                    "assets/Sounds/фраза на ход-1.mp3"
+                ],
+                "type": "audio",
+                "key": "фраза на ход-1"
+            },
+            {
+                "url": [
+                    "assets/Sounds/фраза на ход-2.mp3"
+                ],
+                "type": "audio",
+                "key": "фраза на ход-2"
+            },
+            {
+                "url": [
+                    "assets/Sounds/фраза на ход-3.mp3"
+                ],
+                "type": "audio",
+                "key": "фраза на ход-3"
+            },
+            {
+                "url": [
+                    "assets/Sounds/фраза на ход-4(лоу хп).mp3"
+                ],
+                "type": "audio",
+                "key": "фраза на ход-4(лоу хп)"
+            },
+            {
+                "url": [
+                    "assets/Sounds/шаги.mp3"
+                ],
+                "type": "audio",
+                "key": "шаги"
+            },
+            {
                 "url": "assets/bg.png",
                 "type": "image",
                 "key": "bg"
