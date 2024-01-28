@@ -98,7 +98,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.heroAnim.setScale(this.gun.flipY ? -1 : 1, 1);
 
 		this.heroAnim.x = this.x;
-		this.heroAnim.y = this.y + 48;
+		this.heroAnim.y = this.y + 58;
 
 		this.gun.x = this.heroAnim.x;
 		this.gun.y = this.heroAnim.y;
