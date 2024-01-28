@@ -9,7 +9,7 @@ class Preload extends Phaser.Scene {
 		super("Preload");
 
 		/* START-USER-CTR-CODE */
-		
+
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
@@ -48,6 +48,9 @@ class Preload extends Phaser.Scene {
 		loadingText.text = "Loading...";
 		loadingText.setStyle({ "color": "#e0e0e0", "fontFamily": "arial", "fontSize": "20px" });
 
+		// loading
+		this.add.image(431, 267, "loading");
+
 		this.events.emit("scene-awake");
 	}
 
@@ -61,7 +64,7 @@ class Preload extends Phaser.Scene {
 
 		this.editorPreload();
 
-		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
+		this.load.on(Phaser.Loader.Events.COMPLETE, () => console.log("next"));
 	}
 
 	/* END-USER-CODE */

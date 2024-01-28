@@ -5,6 +5,11 @@
                 "url": "assets/guapen.png",
                 "type": "image",
                 "key": "guapen"
+            },
+            {
+                "url": "assets/preloader/loading.jpg",
+                "type": "image",
+                "key": "loading"
             }
         ]
     },
