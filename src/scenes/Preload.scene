@@ -12,15 +12,15 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "e413cbbf-ce25-4dad-a117-b7cf0791f655",
-            "label": "guapen",
+            "id": "60bc5444-db11-4820-97f8-6c8a2ba5756a",
+            "label": "loading",
             "texture": {
-                "key": "guapen"
+                "key": "loading"
             },
-            "x": 505.0120544433594,
-            "y": 360,
-            "scaleX": 0.32715486817515643,
-            "scaleY": 0.32715486817515643
+            "x": 655,
+            "y": 368,
+            "scaleX": 0.9,
+            "scaleY": 0.9
         },
         {
             "type": "Rectangle",
@@ -43,19 +43,6 @@
             ]
         },
         {
-            "type": "Rectangle",
-            "id": "10e175a4-81b6-449e-9561-6d8ba54d3812",
-            "label": "progressBarBg",
-            "x": 553.0120849609375,
-            "y": 361,
-            "originX": 0,
-            "originY": 0,
-            "fillColor": "#e0e0e0",
-            "isStroked": true,
-            "width": 256,
-            "height": 20
-        },
-        {
             "type": "Text",
             "id": "c4092661-6339-47cf-9fea-8abff3a46e0c",
             "label": "loadingText",
@@ -65,16 +52,6 @@
             "fontFamily": "arial",
             "fontSize": "20px",
             "color": "#e0e0e0"
-        },
-        {
-            "type": "Image",
-            "id": "60bc5444-db11-4820-97f8-6c8a2ba5756a",
-            "label": "loading",
-            "texture": {
-                "key": "loading"
-            },
-            "x": 431,
-            "y": 267
         }
     ],
     "plainObjects": [],

@@ -2,6 +2,16 @@
     "section1": {
         "files": [
             {
+                "url": "assets/preloader/bar_bg.png",
+                "type": "image",
+                "key": "bar_bg"
+            },
+            {
+                "url": "assets/preloader/bar_blue.png",
+                "type": "image",
+                "key": "bar_blue"
+            },
+            {
                 "url": "assets/guapen.png",
                 "type": "image",
                 "key": "guapen"
