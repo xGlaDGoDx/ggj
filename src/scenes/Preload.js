@@ -59,15 +59,6 @@ class Preload extends Phaser.Scene {
 		const loadingText = this.add.text(500, 545, "", {});
 		loadingText.text = "Loading";
 		let i = 0;
-		setInterval(() => {
-			if (i < 3) {
-				loadingText.text += ".";
-				i++;
-			} else {
-				loadingText.text = "Loading";
-				i = 0;
-			}
-		}, 700);
 		loadingText.setOrigin(0, 0.5)
 		loadingText.setStyle({ "fontSize": "50px", "fontStyle": "bold", "stroke": "#050505ff", "strokeThickness":2});
 	}

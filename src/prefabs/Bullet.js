@@ -19,6 +19,8 @@ class Bullet extends spine.SpineGameObject {
     }
 
     onCollide(){
+        let expSound = this.scene.sound.add('взрыв');
+        expSound.play();
         new Explosion(this.scene, this.x, this.y);
         let explosionArea = {
             x: this.x,

@@ -230,6 +230,10 @@ class Level extends Phaser.Scene {
 	}
 
 	changePlayersMove() {
+		let arr = ['фраза на ход-1', 'фраза на ход-2', 'фраза на ход-3', 'фраза на ход-4(лоу хп)'];
+		let rand = Math.ceil(Math.random() * (arr.length - 1));
+		let expSound = this.sound.add(arr[rand]);
+        expSound.play();
 		this.targetHeroIndex = (this.targetHeroIndex + 1) % this.players.length;
 
 		console.log("change target:", this.targetHeroIndex);
