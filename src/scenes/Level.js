@@ -106,6 +106,8 @@ class Level extends Phaser.Scene {
 	create() {
 		this.editorCreate();
 
+		this.terrain.createMap(Math.ceil(Math.random() * 3));
+
 		this.createBg();
 		this.teamsInit();
 		this.victoryWindow.setVisible(false);

@@ -81,7 +81,17 @@
             {
                 "url": "assets/bg.png",
                 "type": "image",
-                "key": "bg"
+                "key": "bg1"
+            },
+            {
+                "url": "assets/bg2.png",
+                "type": "image",
+                "key": "bg2"
+            },
+            {
+                "url": "assets/bg3.png",
+                "type": "image",
+                "key": "bg3"
             },
             {
                 "url": "assets/capibara/capibara.json",
@@ -171,7 +181,17 @@
             {
                 "url": "assets/island.png",
                 "type": "image",
-                "key": "island"
+                "key": "island1"
+            },
+            {
+                "url": "assets/island2.png",
+                "type": "image",
+                "key": "island2"
+            },
+            {
+                "url": "assets/island3.png",
+                "type": "image",
+                "key": "island3"
             },
             {
                 "url": "assets/light/light.json",
@@ -204,13 +224,6 @@
                 "url": "assets/rocket/rocket.atlas",
                 "type": "spineAtlas",
                 "key": "rocket-atlas"
-            },
-            {
-                "url": [
-                    "assets/Sounds/scott-buckley-omega.mp3"
-                ],
-                "type": "audio",
-                "key": "scott-buckley-omega"
             },
             {
                 "url": "assets/test_platform.png",

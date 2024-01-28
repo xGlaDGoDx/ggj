@@ -7,13 +7,15 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 594, y ?? 306, texture || "__DEFAULT", frame);
-		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 61, 96), Phaser.Geom.Rectangle.Contains);
+
+		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 61, 60), Phaser.Geom.Rectangle.Contains);
 		scene.physics.add.existing(this, false);
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
-		this.body.setSize(32, 96, false);
-		this.hp = 150;
+		this.body.setSize(32, 60, false);
+
 		/* START-USER-CTR-CODE */
+		this.hp = 150;
 		this.gun = new Gun(scene, x, y, "gun");
 		this.moveSound = scene.sound.add("шаги");
 	}
@@ -98,7 +100,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.heroAnim.setScale(this.gun.flipY ? -1 : 1, 1);
 
 		this.heroAnim.x = this.x;
-		this.heroAnim.y = this.y + 58;
+		this.heroAnim.y = this.y + 25;
 
 		this.gun.x = this.heroAnim.x;
 		this.gun.y = this.heroAnim.y;
@@ -156,5 +158,4 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			this.onTakeDamage = false; 
 		}, 0);
 	}
-
 }

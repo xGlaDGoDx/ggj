@@ -9,21 +9,27 @@ class Terrain extends Phaser.GameObjects.Image {
 		super(scene, x ?? 445, y ?? 383, texture || "test_platform", frame);
 
 		/* START-USER-CTR-CODE */
-		this.text = "island";
 		this.sc = scene;
-		this.splitImage(6, 6);
-		this.tree = Phaser.Structs.RTree();
-
-		this.tex = this.scene.textures.get(this.text).getSourceImage();
-		this.count = this.scene.textures.get(this.text).getFrameNames().length;
-
-		this.renderImage(x, y, 6);
-		this.destroy();
+		
 		/* END-USER-CTR-CODE */
 	}
 
 	/* START-USER-CODE */
 
+	createMap(type) {
+		this.text = "island" + type;
+		this.sc.bg.setTexture("bg" + type);
+		this.setTexture(this.text);
+
+		this.splitImage(5, 5);
+		this.tree = Phaser.Structs.RTree();
+
+		this.tex = this.scene.textures.get(this.text).getSourceImage();
+		this.count = this.scene.textures.get(this.text).getFrameNames().length;
+
+		this.renderImage(this.x, this.y, 5);
+		this.destroy();
+	}
 
 	splitImage(sizeX, sizeY){
 		const tiles = this.scene.textures.get(this.text);
@@ -43,7 +49,7 @@ class Terrain extends Phaser.GameObjects.Image {
 	checkForAddCollision(id, spritSize) {
 		let air = false;
 		let notAir = false;
-		[[0, spritSize-1], [spritSize-1, 0], [spritSize-1, spritSize-1], [0, 0]].forEach(xy => {
+		[[0, spritSize - 1], [spritSize-1, 0], [spritSize-1, spritSize-1], [0, 0]].forEach(xy => {
 			let pixel = this.getPixel(xy[0], xy[1], id);
 			if(!(pixel.r === 0 && pixel.g === 0 && pixel.b === 0)){
 				notAir = true;

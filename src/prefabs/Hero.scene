@@ -15,7 +15,7 @@
             "label": "arcadesprite_1",
             "hitArea.shape": "RECTANGLE",
             "hitArea.width": 61,
-            "hitArea.height": 96,
+            "hitArea.height": 60,
             "texture": {},
             "x": 594,
             "y": 306,
