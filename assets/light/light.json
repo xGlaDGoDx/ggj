@@ -1,0 +1,44 @@
+{
+"skeleton": {
+	"hash": "0sZC/Aa1Izo",
+	"spine": "4.1.24",
+	"x": -289.5,
+	"y": -297,
+	"width": 579,
+	"height": 594,
+	"images": "./images/",
+	"audio": "C:/Users/Computer/Downloads/Новая папка (5)"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root" }
+],
+"slots": [
+	{ "name": "light", "bone": "bone", "attachment": "light" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"light": {
+				"light": { "scaleX": 3, "scaleY": 3, "width": 193, "height": 198 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"bone": {
+				"rotate": [
+					{},
+					{ "time": 3.1667, "value": -95 },
+					{ "time": 6.2, "value": -175 },
+					{ "time": 9.1667, "value": -275 },
+					{ "time": 12, "value": -360 }
+				]
+			}
+		}
+	}
+}
+}
