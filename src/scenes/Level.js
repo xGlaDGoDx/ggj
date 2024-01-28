@@ -44,10 +44,15 @@ class Level extends Phaser.Scene {
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
 
+		// bg
+		const bg = this.add.image(728, 450, "bg");
+
 		// lists
 		const colliders = [];
 		const players = [hero, hero_1];
 		const bullets = [];
+		const team1 = [hero_1];
+		const team2 = [hero];
 
 		this.bg = bg;
 		this.terrain = terrain;
@@ -57,6 +62,8 @@ class Level extends Phaser.Scene {
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
+		this.team1 = team1;
+		this.team2 = team2;
 
 		this.events.emit("scene-awake");
 	}
@@ -77,6 +84,10 @@ class Level extends Phaser.Scene {
 	players;
 	/** @type {Array<any>} */
 	bullets;
+	/** @type {Hero[]} */
+	team1;
+	/** @type {Hero[]} */
+	team2;
 
 	/* START-USER-CODE */
 	// Write more your code here

@@ -7,13 +7,13 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 594, y ?? 306, texture || "__DEFAULT", frame);
-
 		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 61, 96), Phaser.Geom.Rectangle.Contains);
 		scene.physics.add.existing(this, false);
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
 		this.body.setSize(32, 96, false);
-
+		this.hp = 200;
+		this.addHpView();
 		/* START-USER-CTR-CODE */
 		this.gun = new Gun(scene, x, y, "gun");
 	}
@@ -69,7 +69,25 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 	}
 
+	addHpView(){
+		this.hpBackground = this.scene.add.sprite(this.x, this.y, "hp_bg_green");
+		this.hpBackground.setOrigin(0.5, 0.5);
+		this.HpText = this.scene.add.text(this.x, this.y - 100, this.hp, {});
+		this.HpText.setStroke("0xffffff", 2);
+		this.HpText.setFont("Hitmo");
+		this.HpText.setStyle({ "fontSize": "25px", "fontStyle": "bold" });
+		this.HpText.setOrigin(0.5, 0.5);
+	}
+
 	synchronize(){
+		this.gun.x = this.x;
+		this.gun.y = this.y;
+		if(this.HpText){
+			this.HpText.x = this.x;
+			this.hpBackground.x = this.x;
+			this.HpText.y = this.y - 100;
+			this.hpBackground.y = this.HpText.y;
+		}
 		this.heroAnim.setScale(this.gun.flipY ? -1 : 1, 1);
 
 		this.heroAnim.x = this.x;
@@ -94,4 +112,5 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			this.onTakeDamage = false; 
 		}, 0);
 	}
+
 }
