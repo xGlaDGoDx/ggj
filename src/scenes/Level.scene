@@ -130,6 +130,18 @@
             },
             "x": 610,
             "y": 420
+        },
+        {
+            "prefabId": "ee60a12b-9fb7-4822-beb6-03271d1ad152",
+            "id": "a73f1be5-3631-4304-9222-55cf267c97ed",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "button",
+            "scope": "PUBLIC",
+            "x": 222,
+            "y": 502
         }
     ],
     "plainObjects": [],

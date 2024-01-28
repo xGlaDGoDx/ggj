@@ -31,10 +31,11 @@ class Level extends Phaser.Scene {
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero.body.setOffset(0, 0);
+		hero.body.setSize(32, 32, false);
 
 		// timerText
 		const timerText = this.add.text(608, 407, "", {});
-		timerText.setOrigin(0.5, 0.5);
+		timerText.setOrigin(0.5, 0.25);
 		timerText.text = "00";
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold", "stroke": "#050505ff", "strokeThickness":2});
 
@@ -44,9 +45,14 @@ class Level extends Phaser.Scene {
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
+		hero_1.body.setSize(32, 32, false);
 
 		// timer_bg
 		const timer_bg = this.add.image(610, 420, "timer_bg");
+
+		// button
+		const button = new Button(this, 222, 502);
+		this.add.existing(button);
 
 		// lists
 		const colliders = [];
@@ -61,6 +67,7 @@ class Level extends Phaser.Scene {
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
 		this.timer_bg = timer_bg;
+		this.button = button;
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
@@ -82,6 +89,8 @@ class Level extends Phaser.Scene {
 	hero_1;
 	/** @type {Phaser.GameObjects.Image} */
 	timer_bg;
+	/** @type {Button} */
+	button;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -100,7 +109,7 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		this.createBg();
-
+		this.button.setCallback(() => {console.log(true)}, "close_button_on");
 		this.teamsInit();
 
 		this.graphics = this.add.graphics()

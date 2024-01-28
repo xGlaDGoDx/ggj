@@ -104,6 +104,16 @@
                 "key": "cat_banana-atlas"
             },
             {
+                "url": "assets/ui/close_button.png",
+                "type": "image",
+                "key": "close_button"
+            },
+            {
+                "url": "assets/ui/close_button_on.png",
+                "type": "image",
+                "key": "close_button_on"
+            },
+            {
                 "url": "assets/dino.png",
                 "key": "dino",
                 "type": "image"
@@ -172,6 +182,11 @@
                 "url": "assets/ui/timer_bg.png",
                 "type": "image",
                 "key": "timer_bg"
+            },
+            {
+                "url": "assets/ui/victory_window.png",
+                "type": "image",
+                "key": "victory_window"
             }
         ]
     },
