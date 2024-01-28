@@ -31,7 +31,6 @@ class Level extends Phaser.Scene {
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero.body.setOffset(0, 0);
-		hero.body.setSize(32, 32, false);
 
 		// timerText
 		const timerText = this.add.text(608, 407, "", {});
@@ -45,7 +44,6 @@ class Level extends Phaser.Scene {
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
-		hero_1.body.setSize(32, 32, false);
 
 		// timer_bg
 		const timer_bg = this.add.image(610, 420, "timer_bg");
