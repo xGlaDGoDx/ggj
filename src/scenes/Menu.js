@@ -24,6 +24,7 @@ class Menu extends Phaser.Scene {
 		// button
 		const button = new Button(this, 640, 594, "green_button", () => {
 			setTimeout(() => {
+				this.sound.stopAll();
 				this.scene.start("Level");
 			}, 50);
 		});
