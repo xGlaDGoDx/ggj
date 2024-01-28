@@ -153,12 +153,15 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 	kill(){
 		this.clear();
-
 			this.scene.countTimer.paused = true;
 			if(this.type === "cap"){
 				this.scene.showVictoryWindow("cap");
+				let sound = this.scene.sound.add("win-cat");
+				sound.play();
 			}else{
 				this.scene.showVictoryWindow("cat");
+				let sound = this.scene.sound.add("win-cap");
+				sound.play();
 			}
 
 			let grob = this.grob = this.scene.add.image(this.x, this.y, `grob_${this.type}`)
@@ -168,12 +171,6 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			grob.body.onWorldBounds = true;
 
 			this.scene.physics.add.collider(grob, this.scene.colliders);
-
-			let arr = ['убийство-1', 'убийство-2', 'убийство-3', 'убийство-4'];
-			let rand = Math.ceil(Math.random() * (arr.length - 1));
-			let expSound = this.scene.sound.add(arr[rand]);
-			expSound.play();
-
 			return;
 	}
 }
