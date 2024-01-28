@@ -230,7 +230,7 @@ class Level extends Phaser.Scene {
 	}
 
 	changePlayersMove() {
-		let arr = ['фраза на ход-1', 'фраза на ход-2', 'фраза на ход-3', 'фраза на ход-4(лоу хп)'];
+		let arr = ['фраза на ход-1', 'фраза на ход-2', 'фраза на ход-3', 'фраза на ход-4(лоу хп)', 'убийство-1', 'убийство-2', 'убийство-3', 'убийство-4'];
 		let rand = Math.ceil(Math.random() * (arr.length - 1));
 		let expSound = this.sound.add(arr[rand]);
         expSound.play();

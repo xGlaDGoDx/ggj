@@ -12,9 +12,10 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
 		this.body.setSize(32, 96, false);
-		this.hp = 200;
+		this.hp = 150;
 		/* START-USER-CTR-CODE */
 		this.gun = new Gun(scene, x, y, "gun");
+		this.moveSound = scene.sound.add("шаги");
 	}
 
 	/* START-USER-CODE */
@@ -22,11 +23,17 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	left() {
 		this.setVelocityX(-160);
 		this.play("move");
+		if (this.body.touching.down) {
+			this.moveSound.play();
+		}
 	}
 
 	right() {
 		this.setVelocityX(160);
 		this.play("move");
+		if (this.body.touching.down) {
+			this.moveSound.play();
+		}
 	}
 
 	jump() {
@@ -122,7 +129,10 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 			this.scene.physics.add.collider(grob, this.scene.colliders);
 
-			this.scene.
+			let arr = ['убийство-1', 'убийство-2', 'убийство-3', 'убийство-4'];
+			let rand = Math.ceil(Math.random() * (arr.length - 1));
+			let expSound = this.scene.sound.add(arr[rand]);
+			expSound.play();
 
 			return;
 		}
