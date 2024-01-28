@@ -204,6 +204,13 @@
                 "key": "light-atlas"
             },
             {
+                "url": [
+                    "assets/Sounds/mainGame.mp3"
+                ],
+                "type": "audio",
+                "key": "mainGame"
+            },
+            {
                 "url": "assets/menu_bg.jpg",
                 "type": "image",
                 "key": "menu_bg"

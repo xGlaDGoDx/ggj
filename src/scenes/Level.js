@@ -108,6 +108,11 @@ class Level extends Phaser.Scene {
 
 		this.terrain.createMap(Math.ceil(Math.random() * 3));
 
+		this.sound.play("mainGame", {
+			volume: 0.2,
+			loop: true
+		});
+
 		this.createBg();
 		this.teamsInit();
 		this.victoryWindow.setVisible(false);
@@ -199,7 +204,7 @@ class Level extends Phaser.Scene {
 	}
 
 	setDebug() {
-		this.changeMoveDebugButton = this.input.keyboard.addKey("Space").on("down", this.changePlayersMove.bind(this));
+		this.changeMoveDebugButton = this.input.keyboard.addKey("H").on("down", this.changePlayersMove.bind(this));
 	}
 
 	setCollision() {
@@ -265,11 +270,12 @@ class Level extends Phaser.Scene {
 
 	setHeroTarget(index) {
 		if (this.hero) {
+			this.hero.isTargetHero = false;
 			this.hero.stop();
 		}
 
 		this.hero = this.players[index];
-		this.hero.gun.ammo = 1;
+		this.hero.gun.ammo = 2;
 		this.hero.isTargetHero = true;
 
 		this.changeCameraFocus(this.hero);

@@ -24,7 +24,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			
 		});
 		/* START-USER-CTR-CODE */
-		this.hp = 150;
+		this.hp = 300;
 		this.gun = new Gun(scene, x, y, "gun");
 		this.moveSound = scene.sound.add("шаги");
 	}
@@ -128,8 +128,11 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	onDamageBomb(centerX, centerY) {
-		this.hp -= 50;
-		if(this.HpText){
+		if (!this.isTargetHero) {
+			this.hp -= 50;
+		}
+
+		if(this.HpText) {
 			this.HpText.text = this.hp;
 		}
 
