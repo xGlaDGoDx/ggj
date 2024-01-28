@@ -21,6 +21,14 @@ class Menu extends Phaser.Scene {
 		menu_bg.scaleX = 0.9;
 		menu_bg.scaleY = 0.9;
 
+		// button
+		const button = new Button(this, 640, 594, "green_button", () => {
+			setTimeout(() => {
+				this.scene.start("Level");
+			}, 50);
+		});
+		this.add.existing(button);
+
 		this.events.emit("scene-awake");
 	}
 

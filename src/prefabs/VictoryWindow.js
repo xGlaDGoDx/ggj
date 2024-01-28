@@ -9,7 +9,9 @@ class VictoryWindow extends Phaser.GameObjects.Container {
 		super(scene, x ?? 375, y ?? 128);
 
 		// button
-		const button = new Button(scene, 188, -6);
+		const button = new Button(scene, 188, -6, undefined, () => {
+			scene.scene.start("Menu");
+		});
 		this.add(button);
 
 		// light

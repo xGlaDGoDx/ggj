@@ -18,6 +18,17 @@
             "y": 367,
             "scaleX": 0.9,
             "scaleY": 0.9
+        },
+        {
+            "prefabId": "ee60a12b-9fb7-4822-beb6-03271d1ad152",
+            "id": "a5745a70-ae98-43b3-984a-a462d07976db",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "button",
+            "x": 640,
+            "y": 591
         }
     ],
     "plainObjects": [],

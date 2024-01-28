@@ -129,6 +129,16 @@
                 "key": "explosion-atlas"
             },
             {
+                "url": "assets/ui/green_button.png",
+                "type": "image",
+                "key": "green_button"
+            },
+            {
+                "url": "assets/ui/green_button_on.png",
+                "type": "image",
+                "key": "green_button_on"
+            },
+            {
                 "url": "assets/grob_cap.png",
                 "type": "image",
                 "key": "grob_cap"
