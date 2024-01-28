@@ -12,7 +12,7 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 		this.setOrigin(0.1, 0.5);
 		/* START-USER-CTR-CODE */
 		this.sc = scene;
-		this.setAn
+		this.ammo = 1;
 		/* END-USER-CTR-CODE */
 	}
 
@@ -33,8 +33,11 @@ class Gun extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	fire(x, y, power){
-		let bullet = new Bullet(this.sc, this.sc.spine, this.x, this.y, x, y, power);
-		this.sc.add.existing(bullet);
+		if(this.ammo > 0){
+			let bullet = new Bullet(this.sc, this.sc.spine, this.x, this.y, x, y, power);
+			this.sc.add.existing(bullet);
+			this.ammo--;
+		}
 	}
 
 	/* END-USER-CODE */

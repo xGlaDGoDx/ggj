@@ -242,6 +242,7 @@ class Level extends Phaser.Scene {
 		}
 
 		this.hero = this.players[index];
+		this.hero.gun.ammo = 1;
 		this.hero.isTargetHero = true;
 
 		this.changeCameraFocus(this.hero);
