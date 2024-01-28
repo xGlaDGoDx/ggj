@@ -164,6 +164,18 @@
                 "key": "island"
             },
             {
+                "url": "assets/menu_bg.jpg",
+                "type": "image",
+                "key": "menu_bg"
+            },
+            {
+                "url": [
+                    "assets/Sounds/ost.mp3"
+                ],
+                "type": "audio",
+                "key": "ost"
+            },
+            {
                 "url": "assets/rocket/rocket.json",
                 "type": "spineJson",
                 "key": "rocket"
