@@ -1,17 +1,17 @@
 {
 "skeleton": {
-	"hash": "UqNFaZXKMjU",
+	"hash": "sZghHC0SiMg",
 	"spine": "4.1.24",
-	"x": -58.8,
-	"y": -56.7,
-	"width": 117.6,
-	"height": 113.4,
+	"x": -84,
+	"y": -81,
+	"width": 168,
+	"height": 162,
 	"images": "./images/",
 	"audio": "C:/Users/Computer/Downloads/Новая папка (5)"
 },
 "bones": [
 	{ "name": "root" },
-	{ "name": "bone", "parent": "root", "scaleX": 1.4, "scaleY": 1.4 }
+	{ "name": "bone", "parent": "root", "scaleX": 2, "scaleY": 2 }
 ],
 "slots": [
 	{ "name": "explosion1", "bone": "bone", "attachment": "explosion1" }
