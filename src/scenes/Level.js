@@ -109,7 +109,6 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		this.createBg();
-		this.button.setCallback(() => {console.log(true)}, "close_button_on");
 		this.teamsInit();
 
 		this.graphics = this.add.graphics()
