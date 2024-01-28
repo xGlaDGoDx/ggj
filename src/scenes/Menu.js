@@ -29,7 +29,8 @@ class Menu extends Phaser.Scene {
 	// Write your code here
 
 	create() {
-
+		let expSound = this.sound.add('ost');
+		expSound.play();
 		this.editorCreate();
 	}
 
