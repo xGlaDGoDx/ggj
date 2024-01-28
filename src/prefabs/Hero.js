@@ -104,6 +104,10 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 		this.gun.x = this.heroAnim.x;
 		this.gun.y = this.heroAnim.y;
+
+		if (!this.isTargetHero) {
+			this.stop();
+		}
 	}
 
 	clear() {
@@ -123,6 +127,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		if(this.hp <= 0){
 			this.clear();
 
+			this.scene.countTimer.paused = true;
 			if(this.type === "cap"){
 				this.scene.showVictoryWindow("cap");
 			}else{
