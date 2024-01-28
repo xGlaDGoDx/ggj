@@ -1,10 +1,10 @@
 {
 "skeleton": {
-	"hash": "JzAVQFKIfqw",
+	"hash": "0N+E3mDPUPE",
 	"spine": "4.1.24",
-	"x": -41.04,
+	"x": -35.83,
 	"y": -41.77,
-	"width": 61.55,
+	"width": 56.34,
 	"height": 96.45,
 	"images": "./images/",
 	"audio": "C:/Users/Computer/Downloads/cat_banana"
@@ -26,7 +26,7 @@
 	{ "name": "capi_body", "bone": "capi_body", "attachment": "banana_body" },
 	{ "name": "capi_had", "bone": "capi_had", "attachment": "banana_had" },
 	{ "name": "capi_leg1", "bone": "capi_leg1", "attachment": "banana_leg1" },
-	{ "name": "capi_arm1", "bone": "capi_arm1", "attachment": "banana_arm" }
+	{ "name": "capi_arm1", "bone": "capi_arm1" }
 ],
 "skins": [
 	{
@@ -62,35 +62,27 @@
 				],
 				"scale": [
 					{},
-					{ "time": 0.2667, "x": 0.96 },
-					{ "time": 0.5 }
+					{ "time": 0.5333, "x": 0.96 },
+					{ "time": 1 }
 				]
 			},
 			"capi_had": {
 				"rotate": [
 					{
-						"curve": [ 0.067, 0, 0.2, -3.09 ]
+						"curve": [ 0.133, 0, 0.4, -1.89 ]
 					},
 					{
-						"time": 0.2667,
-						"value": -3.09,
-						"curve": [ 0.325, -3.09, 0.442, 0 ]
+						"time": 0.5333,
+						"value": -1.89,
+						"curve": [ 0.65, -1.89, 0.883, 0 ]
 					},
-					{ "time": 0.5 }
+					{ "time": 1 }
 				]
 			}
 		}
 	},
 	"jump": {
 		"bones": {
-			"root": {
-				"translate": [
-					{ "time": 0.0667 },
-					{ "time": 0.1667, "y": 16.72 },
-					{ "time": 0.2667, "y": 21.24 },
-					{ "time": 0.4 }
-				]
-			},
 			"capi_body": {
 				"rotate": [
 					{ "value": 1.2 },
@@ -102,52 +94,40 @@
 						"curve": [ 0.033, 0, 0.1, -0.09, 0.033, 0, 0.1, -4.73 ]
 					},
 					{ "time": 0.1333, "x": -0.09, "y": -4.73 },
-					{ "time": 0.2667, "x": -0.01, "y": -0.7 },
 					{ "time": 0.4, "x": -0.09, "y": -4.86 },
 					{ "time": 0.5667 }
 				],
 				"scale": [
 					{},
 					{ "time": 0.1333, "x": 0.963, "y": 1.037 },
-					{ "time": 0.2667, "x": 1.003, "y": 0.99 },
 					{ "time": 0.4, "x": 0.938, "y": 0.972 },
-					{ "time": 0.5667 }
-				]
-			},
-			"capi_arm1": {
-				"rotate": [
-					{ "time": 0.0667 },
-					{ "time": 0.2667, "value": -49.11 },
 					{ "time": 0.5667 }
 				]
 			},
 			"capi_had": {
 				"rotate": [
 					{},
-					{ "time": 0.1667, "value": 4.8 },
-					{ "time": 0.4, "value": -10 },
+					{ "time": 0.2667, "value": -10 },
 					{ "time": 0.5667 }
 				]
 			},
 			"capi_arm2": {
 				"rotate": [
-					{ "time": 0.0667 },
-					{ "time": 0.2667, "value": 28.08 },
+					{},
+					{ "time": 0.2, "value": 11.01 },
 					{ "time": 0.5667 }
 				]
 			},
 			"capi_leg1": {
 				"translate": [
 					{},
-					{ "time": 0.0667, "x": -0.11, "y": -2.67 },
-					{ "time": 0.2667, "x": -0.13, "y": -3.16 },
+					{ "time": 0.0667, "x": -0.11, "y": -2.67, "curve": "stepped" },
 					{ "time": 0.4667, "x": -0.11, "y": -2.67 },
 					{ "time": 0.5667 }
 				],
 				"scale": [
 					{},
-					{ "time": 0.0667, "x": 0.914, "y": 1.092 },
-					{ "time": 0.2667, "x": 1.083 },
+					{ "time": 0.0667, "x": 0.914, "y": 1.092, "curve": "stepped" },
 					{ "time": 0.4667, "x": 0.914, "y": 1.092 },
 					{ "time": 0.5667 }
 				]
@@ -155,15 +135,13 @@
 			"capi_leg2": {
 				"translate": [
 					{},
-					{ "time": 0.0667, "x": -0.02, "y": -2.67 },
-					{ "time": 0.2667, "x": -0.02, "y": -3.17 },
+					{ "time": 0.0667, "x": -0.02, "y": -2.67, "curve": "stepped" },
 					{ "time": 0.4667, "x": -0.02, "y": -2.67 },
 					{ "time": 0.5667 }
 				],
 				"scale": [
 					{},
-					{ "time": 0.0667, "x": 0.914, "y": 1.092 },
-					{ "time": 0.2667, "x": 1.083 },
+					{ "time": 0.0667, "x": 0.914, "y": 1.092, "curve": "stepped" },
 					{ "time": 0.4667, "x": 0.914, "y": 1.092 },
 					{ "time": 0.5667 }
 				]
