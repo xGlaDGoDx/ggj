@@ -15,16 +15,6 @@
             "y": 128,
             "list": [
                 {
-                    "type": "Image",
-                    "id": "6dbe6075-284d-4609-9f9a-8c5df6720426",
-                    "label": "victory_window",
-                    "scope": "PUBLIC",
-                    "texture": {
-                        "key": "victory_window"
-                    },
-                    "y": 159
-                },
-                {
                     "prefabId": "ee60a12b-9fb7-4822-beb6-03271d1ad152",
                     "id": "d9cf0ff9-f02f-488e-8d84-f47c83ca8e7e",
                     "unlock": [
@@ -35,6 +25,29 @@
                     "scope": "PUBLIC",
                     "x": 188,
                     "y": -6
+                },
+                {
+                    "type": "SpineGameObject",
+                    "id": "991661f9-c3bf-4825-b4a4-644e05e98595",
+                    "label": "light",
+                    "dataKey": "light",
+                    "atlasKey": "light-atlas",
+                    "skinName": "default",
+                    "bpType": 1,
+                    "bpAnimation": "animation",
+                    "x": -8,
+                    "y": 144
+                },
+                {
+                    "type": "Image",
+                    "id": "3f40d3d4-dd04-4e80-89f0-396172b4a52f",
+                    "label": "victory_window",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "victory_window"
+                    },
+                    "x": -4,
+                    "y": 190
                 }
             ]
         }

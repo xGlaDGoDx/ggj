@@ -164,6 +164,16 @@
                 "key": "island"
             },
             {
+                "url": "assets/light/light.json",
+                "type": "spineJson",
+                "key": "light"
+            },
+            {
+                "url": "assets/light/light.atlas",
+                "type": "spineAtlas",
+                "key": "light-atlas"
+            },
+            {
                 "url": "assets/menu_bg.jpg",
                 "type": "image",
                 "key": "menu_bg"
