@@ -10,10 +10,19 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 
 		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 61, 60), Phaser.Geom.Rectangle.Contains);
 		scene.physics.add.existing(this, false);
+
 		this.body.collideWorldBounds = true;
 		this.body.onWorldBounds = true;
 		this.body.setSize(32, 60, false);
-
+		this.body.world.on('worldbounds', (body) => {
+			if(body.gameObject !== this){
+				return;
+			}
+			this.body.destroy();
+			this.kill();
+			this.grob.body.destroy();
+			
+		});
 		/* START-USER-CTR-CODE */
 		this.hp = 300;
 		this.gun = new Gun(scene, x, y, "gun");
@@ -128,29 +137,7 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 
 		if(this.hp <= 0){
-			this.clear();
-
-			this.scene.countTimer.paused = true;
-			if(this.type === "cap"){
-				this.scene.showVictoryWindow("cap");
-			}else{
-				this.scene.showVictoryWindow("cat");
-			}
-
-			let grob = this.scene.add.image(this.x, this.y, `grob_${this.type}`)
-			this.scene.physics.add.existing(grob);
-
-			grob.body.collideWorldBounds = true;
-			grob.body.onWorldBounds = true;
-
-			this.scene.physics.add.collider(grob, this.scene.colliders);
-
-			let arr = ['убийство-1', 'убийство-2', 'убийство-3', 'убийство-4'];
-			let rand = Math.ceil(Math.random() * (arr.length - 1));
-			let expSound = this.scene.sound.add(arr[rand]);
-			expSound.play();
-
-			return;
+			this.kill();
 		}
 		let angle = new Phaser.Math.Vector2(this.x - centerX, this.y - centerY);
 		angle.normalize();
@@ -165,5 +152,31 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 			this.setVelocity(angle.x * power, angle.y * power);
 			this.onTakeDamage = false; 
 		}, 0);
+	}
+
+	kill(){
+		this.clear();
+
+			this.scene.countTimer.paused = true;
+			if(this.type === "cap"){
+				this.scene.showVictoryWindow("cap");
+			}else{
+				this.scene.showVictoryWindow("cat");
+			}
+
+			let grob = this.grob = this.scene.add.image(this.x, this.y, `grob_${this.type}`)
+			this.scene.physics.add.existing(grob);
+
+			grob.body.collideWorldBounds = true;
+			grob.body.onWorldBounds = true;
+
+			this.scene.physics.add.collider(grob, this.scene.colliders);
+
+			let arr = ['убийство-1', 'убийство-2', 'убийство-3', 'убийство-4'];
+			let rand = Math.ceil(Math.random() * (arr.length - 1));
+			let expSound = this.scene.sound.add(arr[rand]);
+			expSound.play();
+
+			return;
 	}
 }
