@@ -21,13 +21,13 @@ class Terrain extends Phaser.GameObjects.Image {
 		this.sc.bg.setTexture("bg" + type);
 		this.setTexture(this.text);
 
-		this.splitImage(5, 5);
+		this.splitImage(6, 6);
 		this.tree = Phaser.Structs.RTree();
 
 		this.tex = this.scene.textures.get(this.text).getSourceImage();
 		this.count = this.scene.textures.get(this.text).getFrameNames().length;
 
-		this.renderImage(this.x, this.y, 5);
+		this.renderImage(this.x, this.y, 6);
 		this.destroy();
 	}
 

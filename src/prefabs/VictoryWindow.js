@@ -10,7 +10,7 @@ class VictoryWindow extends Phaser.GameObjects.Container {
 
 		// button
 		const button = new Button(scene, 188, -6, undefined, () => {
-			scene.scene.start("Menu");
+			location.reload();
 		});
 		this.add(button);
 
@@ -25,6 +25,8 @@ class VictoryWindow extends Phaser.GameObjects.Container {
 
 		this.button = button;
 		this.victory_window = victory_window;
+
+		this.setDepth(5);
 
 		/* START-USER-CTR-CODE */
 		light.animationState.setAnimation(0, "animation", true);
