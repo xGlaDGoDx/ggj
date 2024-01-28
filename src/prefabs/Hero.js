@@ -13,7 +13,6 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		this.body.onWorldBounds = true;
 		this.body.setSize(32, 96, false);
 		this.hp = 200;
-		this.addHpView();
 		/* START-USER-CTR-CODE */
 		this.gun = new Gun(scene, x, y, "gun");
 	}
@@ -69,8 +68,8 @@ class Hero extends Phaser.Physics.Arcade.Sprite {
 		}
 	}
 
-	addHpView(){
-		this.hpBackground = this.scene.add.sprite(this.x, this.y, "hp_bg_green");
+	addHpView(bgTexture){
+		this.hpBackground = this.scene.add.sprite(this.x, this.y, bgTexture);
 		this.hpBackground.setOrigin(0.5, 0.5);
 		this.HpText = this.scene.add.text(this.x, this.y - 100, this.hp, {});
 		this.HpText.setStroke("0xffffff", 2);

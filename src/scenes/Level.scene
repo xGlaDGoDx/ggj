@@ -80,9 +80,13 @@
             "scope": "PUBLIC",
             "x": 608,
             "y": 407,
+            "originX": 0.5,
+            "originY": 0.25,
             "text": "00",
             "fontSize": "50px",
-            "fontStyle": "bold"
+            "fontStyle": "bold",
+            "stroke": "#050505ff",
+            "strokeThickness": 2
         },
         {
             "prefabId": "71426df2-98ec-49f3-8169-38e6c38e6cbd",
@@ -115,6 +119,17 @@
             "body.height": 32,
             "body.offset.x": 0,
             "body.offset.y": 0
+        },
+        {
+            "type": "Image",
+            "id": "6048e8bb-0373-4415-8e9a-9779aa643d9d",
+            "label": "timer_bg",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "timer_bg"
+            },
+            "x": 610,
+            "y": 420
         }
     ],
     "plainObjects": [],
