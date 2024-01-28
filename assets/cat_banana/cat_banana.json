@@ -1,10 +1,10 @@
 {
 "skeleton": {
-	"hash": "0N+E3mDPUPE",
+	"hash": "6EWvtsdRhz4",
 	"spine": "4.1.24",
-	"x": -35.83,
+	"x": -41.04,
 	"y": -41.77,
-	"width": 56.34,
+	"width": 61.55,
 	"height": 96.45,
 	"images": "./images/",
 	"audio": "C:/Users/Computer/Downloads/cat_banana"
@@ -26,7 +26,7 @@
 	{ "name": "capi_body", "bone": "capi_body", "attachment": "banana_body" },
 	{ "name": "capi_had", "bone": "capi_had", "attachment": "banana_had" },
 	{ "name": "capi_leg1", "bone": "capi_leg1", "attachment": "banana_leg1" },
-	{ "name": "capi_arm1", "bone": "capi_arm1" }
+	{ "name": "capi_arm1", "bone": "capi_arm1", "attachment": "banana_arm" }
 ],
 "skins": [
 	{
@@ -101,6 +101,13 @@
 					{},
 					{ "time": 0.1333, "x": 0.963, "y": 1.037 },
 					{ "time": 0.4, "x": 0.938, "y": 0.972 },
+					{ "time": 0.5667 }
+				]
+			},
+			"capi_arm1": {
+				"rotate": [
+					{ "time": 0.0667 },
+					{ "time": 0.2, "value": -12.53 },
 					{ "time": 0.5667 }
 				]
 			},
