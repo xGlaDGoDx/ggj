@@ -44,9 +44,6 @@ class Level extends Phaser.Scene {
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
 
-		// bg
-		const bg = this.add.image(728, 450, "bg");
-
 		// lists
 		const colliders = [];
 		const players = [hero, hero_1];
