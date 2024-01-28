@@ -154,6 +154,11 @@
                 "key": "island"
             },
             {
+                "url": "assets/menu_bg.jpg",
+                "type": "image",
+                "key": "menu_bg"
+            },
+            {
                 "url": "assets/rocket/rocket.json",
                 "type": "spineJson",
                 "key": "rocket"

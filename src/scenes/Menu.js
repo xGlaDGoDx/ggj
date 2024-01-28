@@ -1,0 +1,41 @@
+
+// You can write more code here
+
+/* START OF COMPILED CODE */
+
+class Menu extends Phaser.Scene {
+
+	constructor() {
+		super("Menu");
+
+		/* START-USER-CTR-CODE */
+		// Write your code here.
+		/* END-USER-CTR-CODE */
+	}
+
+	/** @returns {void} */
+	editorCreate() {
+
+		// menu_bg
+		const menu_bg = this.add.image(653, 367, "menu_bg");
+		menu_bg.scaleX = 0.9;
+		menu_bg.scaleY = 0.9;
+
+		this.events.emit("scene-awake");
+	}
+
+	/* START-USER-CODE */
+
+	// Write your code here
+
+	create() {
+
+		this.editorCreate();
+	}
+
+	/* END-USER-CODE */
+}
+
+/* END OF COMPILED CODE */
+
+// You can write more code here
