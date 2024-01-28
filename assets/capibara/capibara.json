@@ -59,7 +59,7 @@
 	}
 ],
 "animations": {
-	"animation": {
+	"move": {
 		"bones": {
 			"capi_body": {
 				"rotate": [
