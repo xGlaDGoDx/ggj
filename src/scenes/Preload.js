@@ -28,21 +28,6 @@ class Preload extends Phaser.Scene {
 		loading.scaleX = 0.9;
 		loading.scaleY = 0.9;
 
-		// progressBar
-		const progressBar = this.add.rectangle(640, 600, 500, 20);
-		progressBar.setOrigin(0.5, 0.5);
-		progressBar.isFilled = true;
-		progressBar.fillColor = 32767;
-
-		// preloadUpdater
-		new PreloadBarUpdaterScript(progressBar);
-
-		// loadingText
-		const loadingText = this.add.text(640, 520, "", {});
-		loadingText.text = "Loading...";
-		loadingText.setStyle({ "fontSize": "50px", "fontStyle": "bold", "stroke": "#050505ff", "strokeThickness":2});
-		loadingText.setOrigin(0.5, 0.5);
-
 		this.events.emit("scene-awake");
 	}
 
@@ -54,9 +39,37 @@ class Preload extends Phaser.Scene {
 
 		this.editorCreate();
 
+		this.create()
+
 		this.editorPreload();
 
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
+	}
+
+	create() {
+		this.add.image(640, 600, "bar_bg");
+
+		const progressBar = this.add.rectangle(640, 600, 710, 18);
+		progressBar.setOrigin(0.5, 0.5);
+		progressBar.isFilled = true;
+		progressBar.fillColor = 32767;
+
+		new PreloadBarUpdaterScript(progressBar);
+
+		const loadingText = this.add.text(500, 545, "", {});
+		loadingText.text = "Loading";
+		let i = 0;
+		setInterval(() => {
+			if (i < 3) {
+				loadingText.text += ".";
+				i++;
+			} else {
+				loadingText.text = "Loading";
+				i = 0;
+			}
+		}, 700);
+		loadingText.setOrigin(0, 0.5)
+		loadingText.setStyle({ "fontSize": "50px", "fontStyle": "bold", "stroke": "#050505ff", "strokeThickness":2});
 	}
 
 	/* END-USER-CODE */

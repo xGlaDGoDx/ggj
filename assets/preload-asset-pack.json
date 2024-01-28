@@ -20,6 +20,11 @@
                 "url": "assets/preloader/loading.jpg",
                 "type": "image",
                 "key": "loading"
+            },
+            {
+                "url": "assets/ui/Hitmo2.0-Bold.ttf",
+                "type": "binary",
+                "key": "Hitmo2.0-Bold"
             }
         ]
     },
