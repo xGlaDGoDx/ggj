@@ -110,7 +110,7 @@ class Level extends Phaser.Scene {
 
 		this.createBg();
 		this.teamsInit();
-		//this.victoryWindow.setVisible(false);
+		this.victoryWindow.setVisible(false);
 		this.graphics = this.add.graphics()
 
 		let camera = this.camera = this.cameras.main;
