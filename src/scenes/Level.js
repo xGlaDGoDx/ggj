@@ -34,8 +34,9 @@ class Level extends Phaser.Scene {
 
 		// timerText
 		const timerText = this.add.text(608, 407, "", {});
+		timerText.setOrigin(0.5, 0.5);
 		timerText.text = "00";
-		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
+		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold", "stroke": "#050505ff", "strokeThickness":2});
 
 		// hero_1
 		const hero_1 = new Hero(this, 1205, 152);
@@ -43,6 +44,9 @@ class Level extends Phaser.Scene {
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
+
+		// timer_bg
+		const timer_bg = this.add.image(610, 420, "timer_bg");
 
 		// lists
 		const colliders = [];
@@ -56,6 +60,7 @@ class Level extends Phaser.Scene {
 		this.hero = hero;
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
+		this.timer_bg = timer_bg;
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
@@ -75,6 +80,8 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Hero} */
 	hero_1;
+	/** @type {Phaser.GameObjects.Image} */
+	timer_bg;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -111,6 +118,8 @@ class Level extends Phaser.Scene {
 		this.setCollision();
 
 		this.setCountTimer();
+		this.timerText.setDepth(100);
+		this.timer_bg.setDepth(99);
 		this.updateTimer();
 
 		this.targetHeroIndex = 0;
@@ -129,8 +138,15 @@ class Level extends Phaser.Scene {
 	}
 
 	teamsInit() {
-		this.hero.setSpine("capibara");
-		this.hero_1.setSpine("cat_banana");
+		this.team2.forEach((hero) => {
+			hero.setSpine("capibara");
+			hero.addHpView("hp_bg_green");
+		});
+
+		this.team1.forEach((hero) => {
+			hero.setSpine("cat_banana");
+			hero.addHpView("hp_bg_red");
+		});
 	}
 
 	addMouseControl() {
@@ -209,8 +225,8 @@ class Level extends Phaser.Scene {
 
 	updateTimerPosition() {
 		let worldView = this.camera.worldView;
-
-		this.timerText.setPosition(worldView.x + 50, worldView.y + 50);
+		this.timer_bg.setPosition(worldView.x + 100, worldView.y + 580);
+		this.timerText.setPosition(worldView.x + 100, worldView.y + 580);
 	}
 
 	changePlayersMove() {
