@@ -6,14 +6,10 @@
 class Level extends Phaser.Scene {
 
 	constructor() {
-		super({
-			plugins: {
-			  scene: [{ key: "SpinePlugin", plugin: SpinePlugin, mapping: "spine" }],
-			},
-		});
+		super("Level");
 
 		/* START-USER-CTR-CODE */
-		
+
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
@@ -21,18 +17,20 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		// bg
+		const bg = this.add.image(728, 398, "bg");
+
 		// terrain
-		const terrain = new Terrain(this, 0, 275, "island1");
+		const terrain = new Terrain(this, 0, 281, "island");
 		this.add.existing(terrain);
 		terrain.setOrigin(0, 0);
 
 		// hero
-		const hero = new Hero(this, 731, 500);
+		const hero = new Hero(this, 190, 257);
 		this.add.existing(hero);
 		hero.removeInteractive();
 		hero.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero.body.setOffset(0, 0);
-		hero.body.setSize(32, 32, false);
 
 		// timerText
 		const timerText = this.add.text(608, 407, "", {});
@@ -40,26 +38,22 @@ class Level extends Phaser.Scene {
 		timerText.setStyle({ "fontSize": "50px", "fontStyle": "bold" });
 
 		// hero_1
-		const hero_1 = new Hero(this, 791, 500);
+		const hero_1 = new Hero(this, 1205, 152);
 		this.add.existing(hero_1);
 		hero_1.removeInteractive();
 		hero_1.setInteractive(new Phaser.Geom.Circle(15, 14, 89.1237011846265), Phaser.Geom.Circle.Contains);
 		hero_1.body.setOffset(0, 0);
-		hero_1.body.setSize(32, 32, false);
-
-		// bg
-		const bg = this.add.image(728, 450, "bg");
 
 		// lists
 		const colliders = [];
 		const players = [hero, hero_1];
 		const bullets = [];
 
+		this.bg = bg;
 		this.terrain = terrain;
 		this.hero = hero;
 		this.timerText = timerText;
 		this.hero_1 = hero_1;
-		this.bg = bg;
 		this.colliders = colliders;
 		this.players = players;
 		this.bullets = bullets;
@@ -67,6 +61,8 @@ class Level extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Image} */
+	bg;
 	/** @type {Terrain} */
 	terrain;
 	/** @type {Hero} */
@@ -75,8 +71,6 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Hero} */
 	hero_1;
-	/** @type {Phaser.GameObjects.Image} */
-	bg;
 	/** @type {Array<any>} */
 	colliders;
 	/** @type {Hero[]} */
@@ -91,6 +85,8 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		this.createBg();
+
+		this.teamsInit();
 
 		this.graphics = this.add.graphics()
 
@@ -122,6 +118,11 @@ class Level extends Phaser.Scene {
 
 	createBg() {
 		this.bg.setDepth(-1);
+	}
+
+	teamsInit() {
+		this.hero.setSpine("capibara");
+		this.hero_1.setSpine("cat_banana");
 	}
 
 	addMouseControl() {
@@ -234,7 +235,7 @@ class Level extends Phaser.Scene {
 
 	checkCameraInScene() {
 		let worldView = this.camera.worldView;
-		
+
 		if (worldView.left <= 10 || worldView.right >= 1270 || worldView.top <= 5 || worldView.bottom >= 715) {
 			this.camera.pan()
 		}

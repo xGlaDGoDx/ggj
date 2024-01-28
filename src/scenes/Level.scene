@@ -10,6 +10,17 @@
     },
     "displayList": [
         {
+            "type": "Image",
+            "id": "7444d60b-6318-4a6c-9f0d-ce926e260ed0",
+            "label": "bg",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg"
+            },
+            "x": 728,
+            "y": 398
+        },
+        {
             "prefabId": "4a0d16f7-5a99-40ce-9b0b-9b586640095d",
             "id": "3912cb2d-814b-4748-9955-eb5344542f5e",
             "unlock": [
@@ -22,10 +33,10 @@
             "label": "terrain",
             "scope": "PUBLIC",
             "texture": {
-                "key": "guapen"
+                "key": "island"
             },
-            "x": -3,
-            "y": 205,
+            "x": 0,
+            "y": 281,
             "originX": 0,
             "originY": 0
         },
@@ -54,8 +65,8 @@
             "hitArea.x": 15,
             "hitArea.y": 14,
             "hitArea.radius": 89.1237011846265,
-            "x": 731,
-            "y": 432,
+            "x": 190,
+            "y": 257,
             "body.width": 32,
             "body.height": 32,
             "body.offset.x": 0,
@@ -97,23 +108,12 @@
             "hitArea.x": 15,
             "hitArea.y": 14,
             "hitArea.radius": 89.1237011846265,
-            "x": 791,
-            "y": 446,
+            "x": 1205,
+            "y": 152,
             "body.width": 32,
             "body.height": 32,
             "body.offset.x": 0,
             "body.offset.y": 0
-        },
-        {
-            "type": "Image",
-            "id": "7444d60b-6318-4a6c-9f0d-ce926e260ed0",
-            "label": "bg",
-            "scope": "PUBLIC",
-            "texture": {
-                "key": "bg"
-            },
-            "x": 630,
-            "y": 317
         }
     ],
     "plainObjects": [],
