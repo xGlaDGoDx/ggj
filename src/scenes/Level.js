@@ -107,7 +107,8 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-
+		let music = this.sound.add("scott-buckley-omega");
+		music.play();
 		this.createBg();
 		this.teamsInit();
 		this.victoryWindow.setVisible(false);

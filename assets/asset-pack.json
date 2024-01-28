@@ -196,6 +196,13 @@
                 "key": "rocket-atlas"
             },
             {
+                "url": [
+                    "assets/Sounds/scott-buckley-omega.mp3"
+                ],
+                "type": "audio",
+                "key": "scott-buckley-omega"
+            },
+            {
                 "url": "assets/test_platform.png",
                 "type": "image",
                 "key": "test_platform"
