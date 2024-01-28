@@ -2,5 +2,9 @@ gun.png
 size:128,64
 filter:Linear,Linear
 pma:true
+banana_arm
+bounds:80,39,18,22
+capi_arm1
+bounds:2,2,19,25
 gun
-bounds:2,2,76,32
+bounds:2,29,76,32
